@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure", "Azure\Azure.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulators", "Simulators\Simulators.csproj", "{2961338D-FEDA-4886-AE9B-252B77EA3AA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{24D83F1D-3FBE-4D2E-A054-C8E76F3CA300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{02B4B06B-F991-4FC0-ABA2-2A5FEA5DD5B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{2961338D-FEDA-4886-AE9B-252B77EA3AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2961338D-FEDA-4886-AE9B-252B77EA3AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2961338D-FEDA-4886-AE9B-252B77EA3AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D83F1D-3FBE-4D2E-A054-C8E76F3CA300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D83F1D-3FBE-4D2E-A054-C8E76F3CA300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D83F1D-3FBE-4D2E-A054-C8E76F3CA300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D83F1D-3FBE-4D2E-A054-C8E76F3CA300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B4B06B-F991-4FC0-ABA2-2A5FEA5DD5B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B4B06B-F991-4FC0-ABA2-2A5FEA5DD5B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B4B06B-F991-4FC0-ABA2-2A5FEA5DD5B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B4B06B-F991-4FC0-ABA2-2A5FEA5DD5B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
