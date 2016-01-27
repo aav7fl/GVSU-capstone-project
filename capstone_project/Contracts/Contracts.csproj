@@ -7,8 +7,8 @@
     <ProjectGuid>{04E00212-1CF3-427A-94E3-DE6D20360B0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Contracts</RootNamespace>
-    <AssemblyName>Contracts</AssemblyName>
+    <RootNamespace>GVSU.Contracts</RootNamespace>
+    <AssemblyName>GVSU.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -42,7 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Hour.cs" />
+    <Compile Include="ICharity.cs" />
+    <Compile Include="ICharityService.cs" />
+    <Compile Include="IContactInfo.cs" />
+    <Compile Include="ILocation.cs" />
+    <Compile Include="ISkill.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="IVolunteer.cs" />
+    <Compile Include="IVolunteerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
