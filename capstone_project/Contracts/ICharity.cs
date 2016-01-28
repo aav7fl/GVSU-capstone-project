@@ -8,24 +8,24 @@ namespace GVSU.Contracts
 {
     public interface ICharity
     {
-        long Id { get; set; }
+        long Id { get; }
 
-        string Name { get; set; }
+        string Name { get; }
 
-        string ShortDescription { get; set; }
+        string ShortDescription { get; }
 
-        string WebsiteURL { get; set; }
+        string WebsiteURL { get; }
 
-        bool Claimed { get; set; }
+        DateTime CreatedAt { get; }
 
-        bool Verified { get; set; }
+        DateTime CreatedBy { get; }
 
-        DateTime CreatedAt { get; set; }
+        IContactInfo ContactInfo { get; }
 
-        DateTime CreatedBy { get; set; }
+        ILocation Locations { get; }
+        
+        bool Claimed { get; }
 
-        IContactInfo ContactInfo { get; set; }
-
-        ILocation Locations { get; set; }
+        bool Verified { get; }
     }
 }

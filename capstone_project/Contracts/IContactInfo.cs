@@ -8,8 +8,10 @@ namespace GVSU.Contracts
 {
     public interface IContactInfo
     {
-        string PhoneNumber { get; set; }
+        string PhoneNumber { get; }
 
-        string Email { get; set; }
+        string Email { get; }
+        
+        string Fax { get; }
     }
 }

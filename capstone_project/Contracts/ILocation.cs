@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GVSU.Contracts
+﻿namespace GVSU.Contracts
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public interface ILocation
     {
 
-        string Name { get;}
+        string Name { get; }
+        
+        string ShortDescription { get; }
 
         string AddressLine1 { get; }
 
@@ -22,8 +24,6 @@ namespace GVSU.Contracts
         string ZipCode { get; }
 
         string Country { get; }
-
-        string ShortDescription { get; }
 
     }
 }

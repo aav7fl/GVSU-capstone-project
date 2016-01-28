@@ -7,8 +7,8 @@
     <ProjectGuid>{C6DFA7E9-24D9-4735-854D-3694C521DDBB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Serialization</RootNamespace>
-    <AssemblyName>Serialization</AssemblyName>
+    <RootNamespace>GVSU.Serialization</RootNamespace>
+    <AssemblyName>GVSU.Serialization</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

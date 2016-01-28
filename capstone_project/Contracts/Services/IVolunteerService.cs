@@ -6,11 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public interface IVolunteer
+    public interface IVolunteerService
     {
-        int Id { get; set; }
-
-        IUser User { get; set; }
-
     }
 }

@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GVSU.Contracts
+﻿namespace GVSU.Contracts
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public interface ISkill
     {
-        int Id { get; }
+        long Id { get; }
 
         string Description { get; }
 
