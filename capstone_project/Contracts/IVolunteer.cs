@@ -12,10 +12,5 @@ namespace GVSU.Contracts
 
         IUser User { get; set; }
 
-        IEnumerable<ILocation> Locations { get; set; }
-
-        IEnumerable<ISkill> Skills { get; set; }
-
-        IEnumerable<Hour> Hours { get; set; }
     }
 }

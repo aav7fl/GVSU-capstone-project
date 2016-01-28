@@ -9,21 +9,21 @@ namespace GVSU.Contracts
     public interface ILocation
     {
 
-        string Name { get; set; }
+        string Name { get;}
 
-        string AddressLine1 { get; set; }
+        string AddressLine1 { get; }
 
-        string AddressLine2 { get; set; }
+        string AddressLine2 { get; }
 
-        string City { get; set; }
+        string City { get; }
 
-        string State { get; set; }
+        string State { get; }
 
-        string ZipCode { get; set; }
+        string ZipCode { get; }
 
-        string Country { get; set; }
+        string Country { get; }
 
-        string ShortDescription { get; set; }
+        string ShortDescription { get; }
 
     }
 }

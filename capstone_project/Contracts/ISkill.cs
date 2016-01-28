@@ -8,9 +8,9 @@ namespace GVSU.Contracts
 {
     public interface ISkill
     {
-        int Id { get; set; }
+        int Id { get; }
 
-        string Description { get; set; }
+        string Description { get; }
 
     }
 }
