@@ -11,7 +11,7 @@ namespace GVSU.Contracts
         string PhoneNumber { get; }
 
         string Email { get; }
-        
+
         string Fax { get; }
     }
 }

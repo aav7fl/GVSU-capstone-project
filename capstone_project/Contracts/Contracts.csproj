@@ -42,16 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hour.cs" />
     <Compile Include="ICharity.cs" />
-    <Compile Include="ICharityService.cs" />
     <Compile Include="IContactInfo.cs" />
+    <Compile Include="IHour.cs" />
     <Compile Include="ILocation.cs" />
     <Compile Include="ISkill.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="IVolunteer.cs" />
-    <Compile Include="IVolunteerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ICharityService.cs" />
+    <Compile Include="Services\IVolunteerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

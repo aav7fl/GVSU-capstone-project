@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Charity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Volunteer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

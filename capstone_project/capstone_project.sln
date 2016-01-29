@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 14 for Web
+# Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{24D83F1D-3FBE-4D2E-A054-C8E76F3CA300}"
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure", "Azure\Azure.csproj", "{D370AE1D-91E2-463C-94D3-BC795E602ADC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulators", "Simulators\Simulators.csproj", "{BCDF2B92-B2C4-4FDC-8687-63E899DC44C8}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "GVSU.ProjectDiagrams", "GVSU.ProjectDiagrams\GVSU.ProjectDiagrams.modelproj", "{8BAB480D-321A-4DAB-B196-4BEAA4D883F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{BCDF2B92-B2C4-4FDC-8687-63E899DC44C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCDF2B92-B2C4-4FDC-8687-63E899DC44C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCDF2B92-B2C4-4FDC-8687-63E899DC44C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BAB480D-321A-4DAB-B196-4BEAA4D883F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAB480D-321A-4DAB-B196-4BEAA4D883F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BAB480D-321A-4DAB-B196-4BEAA4D883F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BAB480D-321A-4DAB-B196-4BEAA4D883F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
