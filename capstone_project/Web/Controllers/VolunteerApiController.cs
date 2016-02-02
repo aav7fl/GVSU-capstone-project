@@ -6,6 +6,7 @@
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
+    using GVSU.Contracts;
 
     public class VolunteerApiController : ApiController
     {
@@ -13,9 +14,11 @@
         //factory in startup
         //Take it as a parameter
         //Configure app to get the service
-        
+
         // GET: api/VolunteerApi
         //return IVolunteer (configured in Serializer)
+
+        // IVolunteerService volunteerService = new IVolunteerService();
         
         public IEnumerable<string> Get()
         {

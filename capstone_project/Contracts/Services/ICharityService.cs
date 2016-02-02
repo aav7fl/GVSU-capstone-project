@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace GVSU.Contracts
 {
-    interface ICharityService
+    public interface ICharityService
     {
+        IVolunteer GetCharityById(int id);
+
+        IEnumerable<IVolunteer> GetAllCharities();
+
+        string CreateCharity(IVolunteer volunteer);
+
+        string UpdateCharity(IVolunteer volunteer);
+
+        string DeleteCharityById(int id);
     }
 }

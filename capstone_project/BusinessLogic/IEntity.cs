@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simulators
+namespace GVSU.BusinessLogic
 {
-    public class Class1
+    public class IEntity
     {
+        public long Id { get; set; }
     }
 }
