@@ -26,6 +26,7 @@ namespace Web
         {
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new VolunteerConverter());
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new UserConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new ContactInfoConverter());
         }
     }
 }

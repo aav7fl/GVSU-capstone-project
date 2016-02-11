@@ -44,4 +44,7 @@ namespace GVSU.Serialization.Converters
     {
     }
 
+    public class ContactInfoConverter : JsonBaseConverter<IContactInfo, ContactInfo>
+    {
+    }
 }
