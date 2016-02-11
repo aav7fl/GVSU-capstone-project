@@ -6,13 +6,15 @@
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
+    using System.Web.Http.Description;
     using GVSU.Contracts;
 
     public class VolunteerController : ServiceApiControllerBase<IVolunteerService>
     {
-        public IEnumerable<IVolunteer> Get()
+        [ResponseType(typeof(IEnumerable<IVolunteer>))]
+        public IHttpActionResult Get()
         {
-            return this.Service.GetAllVolunteers();
+            return Ok(this.Service.GetAllVolunteers());
         }
     }
 }
