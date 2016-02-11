@@ -5,8 +5,12 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    
-    public class Volunteer
+    using Contracts;
+
+    public class Volunteer : IVolunteer
     {
+        public int Id { get; set; }
+
+        public IUser User { get; set; }
     }
 }

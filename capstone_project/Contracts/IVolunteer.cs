@@ -8,9 +8,9 @@
 
     public interface IVolunteer
     {
-        int Id { get; set; }
+        int Id { get; }
 
-        IUser User { get; set; }
+        IUser User { get; }
 
     }
 }

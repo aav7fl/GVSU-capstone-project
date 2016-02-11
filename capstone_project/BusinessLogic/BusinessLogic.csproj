@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory.cs" />
     <Compile Include="IVolunteerStore.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="VolunteerService.cs" />
