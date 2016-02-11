@@ -8,39 +8,39 @@
     using GVSU.BusinessLogic;
     using GVSU.Contracts;
 
-    public class VolunteerRepositorySimulator : IRepository<Volunteer>
+    public class VolunteerRepositorySimulator : IRepository<IVolunteer>
     {
-        private List<Volunteer> volunteerList;
+        private List<IVolunteer> volunteerList;
 
         public VolunteerRepositorySimulator()
         {
-            this.volunteerList = new List<Volunteer>();
+            this.volunteerList = new List<IVolunteer>();
         }
 
-        IEnumerable<Volunteer> IRepository<Volunteer>.List
+        IEnumerable<IVolunteer> IRepository<IVolunteer>.List
         {
             get { return this.volunteerList; }
         }
 
-        void IRepository<Volunteer>.Add(Volunteer entity)
+        void IRepository<IVolunteer>.Add(IVolunteer volunteer)
         {
-            this.volunteerList.Add(entity);
+            this.volunteerList.Add(volunteer);
         }
 
-        void IRepository<Volunteer>.Delete(Volunteer entity)
+        void IRepository<IVolunteer>.Delete(IVolunteer volunteer)
         {
-            this.volunteerList.Remove(entity);
+            this.volunteerList.Remove(volunteer);
         }
 
-        Volunteer IRepository<Volunteer>.FindById(long id)
+        IVolunteer IRepository<IVolunteer>.FindById(long id)
         {
             return this.volunteerList.Find(e => e.Id == id);
         }
 
-        void IRepository<Volunteer>.Update(Volunteer entity)
+        void IRepository<IVolunteer>.Update(IVolunteer volunteer)
         {
-            this.volunteerList.Remove(this.volunteerList.Find(e => e.Id == entity.Id));
-            this.volunteerList.Add(entity);
+            this.volunteerList.Remove(this.volunteerList.Find(e => e.Id == volunteer.Id));
+            this.volunteerList.Add(volunteer);
         }
     }
 }

@@ -7,7 +7,6 @@
     using System.Threading.Tasks;
 
     public interface IRepository<T>
-        where T : IEntity
     {
         IEnumerable<T> List { get; }
 
