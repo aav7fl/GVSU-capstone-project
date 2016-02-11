@@ -12,7 +12,8 @@
         //business logic classes don't know anything about who is calling them
         //general busines rules
         //validation
-        IRepository<IVolunteer>
+        //IVolunteerStore
+        //ICharityStore
 
         public VolunteerService()
         {
