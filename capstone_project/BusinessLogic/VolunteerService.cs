@@ -12,7 +12,12 @@
         //business logic classes don't know anything about who is calling them
         //general busines rules
         //validation
+        IRepository<IVolunteer>
 
+        public VolunteerService()
+        {
+
+        }
         string IVolunteerService.CreateVolunteer(IVolunteer volunteer)
         {
             throw new NotImplementedException();
