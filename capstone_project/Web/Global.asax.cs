@@ -25,6 +25,7 @@ namespace Web
         private void ConfigureJson(HttpConfiguration config)
         {
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new VolunteerConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new UserConverter());
         }
     }
 }
