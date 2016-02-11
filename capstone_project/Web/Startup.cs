@@ -1,4 +1,5 @@
-﻿using GVSU.BusinessLogic;
+﻿using GVSU.Azure;
+using GVSU.BusinessLogic;
 using GVSU.Contracts;
 using GVSU.Simulators;
 using Microsoft.Owin;
@@ -17,7 +18,7 @@ namespace Web
 
         public void InitializeFactories()
         {
-            Factory.Register<IVolunteerService>(() => new VolunteerServiceSimulator());
+            Factory.Register<IVolunteerService>(() => new AzureVolunteerService(new VolunteerServiceSimulator()));
         }
     }
 }

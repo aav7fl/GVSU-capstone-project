@@ -17,6 +17,11 @@
             return Ok(this.Service.GetAllVolunteers());
         }
 
+        public IHttpActionResult Get(int id)
+        {
+            return Ok(this.Service.GetVolunteerById(id));
+        }
+
         public IHttpActionResult Post([FromBody]IVolunteer volunteer)
         {
             return Ok(this.Service.CreateVolunteer(volunteer));

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\VolunteerServiceDecorator.cs" />
     <Compile Include="ICharity.cs" />
     <Compile Include="IContactInfo.cs" />
     <Compile Include="IHour.cs" />
