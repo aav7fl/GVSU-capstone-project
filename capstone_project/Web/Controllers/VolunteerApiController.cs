@@ -8,8 +8,11 @@
     using System.Web.Http;
     using GVSU.Contracts;
 
-    public class VolunteerApiController : ApiController
+    public class VolunteerController : ServiceApiControllerBase<IVolunteerService>
     {
-
+        public IEnumerable<IVolunteer> Get()
+        {
+            return this.Service.GetAllVolunteers();
+        }
     }
 }

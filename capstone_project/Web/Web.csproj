@@ -221,6 +221,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ServiceApiControllerBase.cs" />
     <Compile Include="Controllers\VolunteerApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -313,9 +314,21 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-rc1\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{f0df2858-d661-4d9f-a163-739780f82d74}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{04e00212-1cf3-427a-94e3-de6d20360b0e}</Project>
       <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Serialization\Serialization.csproj">
+      <Project>{c6dfa7e9-24d9-4735-854d-3694c521ddbb}</Project>
+      <Name>Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simulators\Simulators.csproj">
+      <Project>{bcdf2b92-b2c4-4fdc-8687-63e899dc44c8}</Project>
+      <Name>Simulators</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
