@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IEntity.cs" />
+    <Compile Include="IVolunteerStore.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="VolunteerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
