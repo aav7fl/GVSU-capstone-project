@@ -16,5 +16,10 @@
         {
             return Ok(this.Service.GetAllVolunteers());
         }
+
+        public IHttpActionResult Post([FromBody]IVolunteer volunteer)
+        {
+            return Ok(this.Service.CreateVolunteer(volunteer));
+        }
     }
 }
