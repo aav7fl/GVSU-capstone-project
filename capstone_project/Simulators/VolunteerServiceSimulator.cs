@@ -7,14 +7,26 @@
     using System.Threading.Tasks;
     using GVSU.BusinessLogic;
     using GVSU.Contracts;
-
+    using Serialization;
     public class VolunteerServiceSimulator : IVolunteerService
     {
         private readonly IDictionary<int, IVolunteer> volunteerList;
 
         public VolunteerServiceSimulator()
         {
-            volunteerList = new Dictionary<int, IVolunteer>();
+            volunteerList = new Dictionary<int, IVolunteer>()
+            {
+                { 1, new Volunteer()
+                    {
+                        Id = 1,
+                        User = new User()
+                        {
+                            FirstName = "Simulated",
+                            LastName = "User",
+                        }
+                    }
+                }
+            };
         }
 
         public string CreateVolunteer(IVolunteer volunteer)

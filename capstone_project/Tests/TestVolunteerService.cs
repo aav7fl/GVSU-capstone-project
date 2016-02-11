@@ -1,4 +1,5 @@
-﻿namespace GVSU.Tests
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace GVSU.Tests
 {
     using System;
     using Contracts;
@@ -24,6 +25,13 @@
             });
 
             result.Should().NotBeNullOrEmpty();
+        }
+
+        [TestMethod]
+        public void GetVolunteer()
+        {
+            var actual = this.Service.GetAllVolunteers();
+            actual.Should().NotBeNullOrEmpty();
         }
     }
 }

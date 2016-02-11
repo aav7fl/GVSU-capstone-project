@@ -62,6 +62,10 @@
       <Project>{04e00212-1cf3-427a-94e3-de6d20360b0e}</Project>
       <Name>Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Serialization\Serialization.csproj">
+      <Project>{c6dfa7e9-24d9-4735-854d-3694c521ddbb}</Project>
+      <Name>Serialization</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\stylecop-targets.6.0.0.3-rc2\build\stylecop-targets.targets" Condition="Exists('..\packages\stylecop-targets.6.0.0.3-rc2\build\stylecop-targets.targets')" />
