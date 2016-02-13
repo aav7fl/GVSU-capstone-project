@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using GVSU.Serialization.Converters;
+using Newtonsoft.Json;
 
 namespace Web
 {
@@ -18,6 +20,19 @@ namespace Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            GlobalConfiguration.Configure(ConfigureJson);
+        }
+
+        private void ConfigureJson(HttpConfiguration config)
+        {
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new VolunteerConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new UserConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new ContactInfoConverter());
+
+            JsonConvert.DefaultSettings = () =>
+            {
+                return config.Formatters.JsonFormatter.SerializerSettings;
+            };
         }
     }
 }

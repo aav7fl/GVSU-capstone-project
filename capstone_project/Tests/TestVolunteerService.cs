@@ -1,15 +1,37 @@
-﻿namespace GVSU.Tests
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace GVSU.Tests
 {
     using System;
+    using Contracts;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Serialization;
+    using FluentAssertions;
 
     [TestClass]
-    public class TestVolunteerService
+    public class TestVolunteerService : SerivceTestBase<IVolunteerService>
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CreateVolunteer()
         {
+            var result = this.Service.CreateVolunteer(new Volunteer()
+            {
+                User = new User()
+                {
+                    ContactInfo = new ContactInfo()
+                    {
+                        Email = "dontusthis@gvsu.edu"
+                    }
+                }
+            });
 
+            result.Should().NotBeNullOrEmpty();
+        }
+
+        [TestMethod]
+        public void GetVolunteer()
+        {
+            var actual = this.Service.GetAllVolunteers();
+            actual.Should().NotBeNullOrEmpty();
         }
     }
 }

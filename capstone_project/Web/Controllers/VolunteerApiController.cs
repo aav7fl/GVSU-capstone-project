@@ -6,45 +6,25 @@
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
+    using System.Web.Http.Description;
     using GVSU.Contracts;
 
-    public class VolunteerApiController : ApiController
+    public class VolunteerController : ServiceApiControllerBase<IVolunteerService>
     {
-        //IVolunteerService (get from factory...look into packages)
-        //factory in startup
-        //Take it as a parameter
-        //Configure app to get the service
-
-        // GET: api/VolunteerApi
-        //return IVolunteer (configured in Serializer)
-
-        // IVolunteerService volunteerService = new IVolunteerService();
-        
-        public IEnumerable<string> Get()
+        [ResponseType(typeof(IEnumerable<IVolunteer>))]
+        public IHttpActionResult Get()
         {
-            return new string[] { "volunteer1", "volunteer2" };
+            return Ok(this.Service.GetAllVolunteers());
         }
 
-        // GET: api/VolunteerApi/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "volunteer" + id;
+            return Ok(this.Service.GetVolunteerById(id));
         }
 
-        // POST: api/VolunteerApi
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]IVolunteer volunteer)
         {
-            
-        }
-
-        // PUT: api/VolunteerApi/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/VolunteerApi/5
-        public void Delete(int id)
-        {
+            return Ok(this.Service.CreateVolunteer(volunteer));
         }
     }
 }
