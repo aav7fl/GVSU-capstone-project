@@ -13,6 +13,13 @@ namespace Web.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            ViewBag.Message = "Our vision for Charma";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "How to contact us";
