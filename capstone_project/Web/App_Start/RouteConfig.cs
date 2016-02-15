@@ -13,11 +13,30 @@ namespace Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Add custom about route
+            routes.MapRoute(
+                "AboutRoute",
+                "About",
+            new { controller = "Home", action = "About" });
+
+            // Add custom contact route
+            routes.MapRoute(
+                "ContactRoute",
+                "Contact",
+            new { controller = "Home", action = "Contact" });
+
+            // Default route
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+
+            // Show a 404 error page for anything else.
+            // TODO: implement 404 page
+            routes.MapRoute(
+                "Error",
+                "{*url}",
+                new { controller = "Error", action = "404" });
         }
     }
 }
