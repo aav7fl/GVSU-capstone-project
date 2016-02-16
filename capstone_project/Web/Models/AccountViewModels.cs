@@ -92,7 +92,6 @@ namespace Web.Models
         [Display(Name = "Address Line1")]
         public string AddressOne { get; set; }
 
-        [Required]
         [Display(Name = "Address Line2")]
         public string AddressTwo { get; set; }
 
@@ -105,8 +104,11 @@ namespace Web.Models
         public string State { get; set; }
 
         [Required]
-        [Display(Name = "Zip Code")]
+        [Display(Name = "Zip")]
         public int ZipCode { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
 
 
     }
