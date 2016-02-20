@@ -13,18 +13,6 @@ namespace Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // Add custom about route
-            routes.MapRoute(
-                "AboutRoute",
-                "About",
-            new { controller = "Home", action = "About" });
-
-            // Add custom contact route
-            routes.MapRoute(
-                "ContactRoute",
-                "Contact",
-            new { controller = "Home", action = "Contact" });
-
             // Default route
             routes.MapRoute(
                 name: "Default",

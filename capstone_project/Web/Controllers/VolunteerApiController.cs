@@ -14,17 +14,62 @@
         [ResponseType(typeof(IEnumerable<IVolunteer>))]
         public IHttpActionResult Get()
         {
-            return Ok(this.Service.GetAllVolunteers());
+            try
+            {
+                return Ok(this.Service.GetAllVolunteers());
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
         }
 
         public IHttpActionResult Get(int id)
         {
-            return Ok(this.Service.GetVolunteerById(id));
+            try
+            {
+                var volunteer = this.Service.GetVolunteerById(id);
+
+                if (volunteer == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(volunteer);
+                }
+
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
         }
 
         public IHttpActionResult Post([FromBody]IVolunteer volunteer)
         {
-            return Ok(this.Service.CreateVolunteer(volunteer));
+            try
+            {
+                // TO-DO: replace with Created 201 response
+                return Ok(this.Service.CreateVolunteer(volunteer));
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        public IHttpActionResult Put(int id, [FromBody]IVolunteer volunteer)
+        {
+            try
+            {
+                // TO-DO: replace with Created 201 response
+                return Ok(this.Service.UpdateVolunteer(volunteer));
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
         }
     }
 }
