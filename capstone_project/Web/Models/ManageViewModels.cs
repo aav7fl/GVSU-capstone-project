@@ -75,6 +75,8 @@ namespace Web.Models
         [Display(Name = "Rating (1-5)")]
         public int Rating { get; set; }
 
+        [Display(Name = "Short description")]
+        public string ShortDescription { get; set; }
     }
 
     public class VerifyPhoneNumberViewModel
