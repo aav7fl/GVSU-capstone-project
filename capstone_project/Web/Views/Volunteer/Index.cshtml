@@ -4,9 +4,15 @@
 }
 
 <h2>@ViewBag.Title.</h2>
-
+@if (Request.IsAuthenticated)
+{
 @Html.ActionLink("Edit Profile", "Edit")
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+}
+else
+{
+    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+} 
