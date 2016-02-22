@@ -1,4 +1,4 @@
-﻿namespace Web.Controllers
+﻿namespace Web.Api.Controllers
 {
     using System;
     using System.Collections.Generic;
