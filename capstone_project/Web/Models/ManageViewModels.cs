@@ -66,10 +66,15 @@ namespace Web.Models
         public string Number { get; set; }
     }
 
-    public class AddLoggedHours
+    public class UpdateVolunteerProfile
     {
-        [Display(Name = "Hours")]
+        [Display(Name = "Total Hours")]
         public int Hours { get; set; }
+
+        [Range(1, 5)]
+        [Display(Name = "Rating (1-5)")]
+        public int Rating { get; set; }
+
     }
 
     public class VerifyPhoneNumberViewModel

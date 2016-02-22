@@ -260,6 +260,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602201641358_InitialCreate.cs" />
+    <Compile Include="Migrations\201602201641358_InitialCreate.Designer.cs">
+      <DependentUpon>201602201641358_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602221611445_Initial.cs" />
+    <Compile Include="Migrations\201602221611445_Initial.Designer.cs">
+      <DependentUpon>201602221611445_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -331,10 +340,12 @@
     <Content Include="Views\Volunteer\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Volunteer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Css\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -373,6 +384,14 @@
       <Project>{bcdf2b92-b2c4-4fdc-8687-63e899dc44c8}</Project>
       <Name>Simulators</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602201641358_InitialCreate.resx">
+      <DependentUpon>201602201641358_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602221611445_Initial.resx">
+      <DependentUpon>201602221611445_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

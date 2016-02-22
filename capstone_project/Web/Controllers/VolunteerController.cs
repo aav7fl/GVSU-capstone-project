@@ -13,5 +13,11 @@ namespace Web.Controllers
         {
             return View();
         }
+
+        // GET: Volunteer Edit
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
 }
