@@ -66,6 +66,12 @@ namespace Web.Models
         public string Number { get; set; }
     }
 
+    public class AddLoggedHours
+    {
+        [Display(Name = "Hours")]
+        public int Hours { get; set; }
+    }
+
     public class VerifyPhoneNumberViewModel
     {
         [Required]
