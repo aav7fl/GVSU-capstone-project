@@ -9,6 +9,7 @@
     using System.Web.Http.Description;
     using GVSU.Contracts;
 
+    [RoutePrefix("api")]
     public class VolunteerController : ServiceApiControllerBase<IVolunteerService>
     {
         [ResponseType(typeof(IEnumerable<IVolunteer>))]
@@ -65,6 +66,21 @@
             {
                 // TO-DO: replace with Created 201 response
                 return Ok(this.Service.UpdateVolunteer(volunteer));
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                this.Service.DeleteVolunteerById(id);
+                return StatusCode(HttpStatusCode.NoContent);
+
+                // Return Not Found status if id is not found
             }
             catch (Exception)
             {
