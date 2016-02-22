@@ -14,8 +14,9 @@ namespace Web
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                defaults: new { id = RouteParameter.Optional });
+
+            config.MessageHandlers.Add(new CacheCow.Server.CachingHandler(config));
         }
     }
 }

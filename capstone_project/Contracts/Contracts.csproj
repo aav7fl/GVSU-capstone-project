@@ -43,13 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Decorators\VolunteerServiceDecorator.cs" />
-    <Compile Include="ICharity.cs" />
-    <Compile Include="IContactInfo.cs" />
-    <Compile Include="IHour.cs" />
-    <Compile Include="ILocation.cs" />
-    <Compile Include="ISkill.cs" />
-    <Compile Include="IUser.cs" />
-    <Compile Include="IVolunteer.cs" />
+    <Compile Include="Entities\ICharity.cs" />
+    <Compile Include="Entities\IContactInfo.cs" />
+    <Compile Include="Entities\IHour.cs" />
+    <Compile Include="Entities\ILocation.cs" />
+    <Compile Include="Entities\ISkill.cs" />
+    <Compile Include="Entities\IUser.cs" />
+    <Compile Include="Entities\IVolunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICharityService.cs" />
     <Compile Include="Services\IVolunteerService.cs" />
