@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNet.Identity
+
+@model Web.Models.UpdateCharityProfile
+@{
+    ViewBag.Title = "Charity profile";
+}
+
+<h2>@ViewBag.Title.</h2>
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Index", "Charity", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Edit profile information</h4>
+        <hr />
+        @Html.Label(String.Empty, "User: " + User.Identity.GetUserName())
+        <div class="form-group">
+            @Html.LabelFor(m => m.CharityName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.CharityName, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Hours, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Hours, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Rating, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Rating, null, "Rating", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.ShortDescription, null, "Short Description", new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-default" />
+            </div>
+        </div>
+    }
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+}
+else
+{
+
+} 
