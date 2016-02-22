@@ -1,17 +1,36 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/***************************************************************************
+ * DOCUMENT
+ ***************************************************************************/
+html, body { 
+    height: 100%;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-top: 75px;
+    min-height: 100%;
+    padding: 0 15px; /** Offsets negative margins in rows when using fluid layout **/
+}
+
+.banner {
+    background-image: url('../../Content/Images/home-image.jpg'); 
+    background-repeat: none;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    background-size: cover; 
+    -o-background-size: cover;
+    text-align: center;
+    color: white;
+}
+
+.banner .intro-text {
+    padding-top: 250px;
+    padding-bottom: 150px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
+/**
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -21,4 +40,84 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/***************************************************************************
+ * HEADER & NAV BAR
+ ***************************************************************************/
+.navbar-fixed-top  {
+     -webkit-backface-visibility: hidden;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 70px;
+    height: 75px;
+    padding-top: 0;
+    font-size: 18px;
+}
+
+.navbar-default {
+    background-color: #F8F8F8;
+    border-color: #E7E7E7;
+}
+
+.navbar-default .navbar-brand {
+    color: #777;
+    font-size: 22px;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+
+/* links */
+.navbar-default .navbar-nav > li > a {
+    color: #777;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+
+/* carets */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+
+/***************************************************************************
+ * FOOTER AND COPYRIGHT
+ ***************************************************************************/
+.footer {
+    //position: absolute;
+    margin-bottom: -60px;
+    width: 100%;
+    line-height: 55px;
+    height: 60px;
+    background-color: #5E5E5E;
+    color: #ffffff;
 }
