@@ -81,6 +81,9 @@ namespace Web.Models
 
     public class UpdateCharityProfile
     {
+        [Display(Name = "Charity name")]
+        public string CharityName { get; set; }
+
         [Display(Name = "Total Hours")]
         public int Hours { get; set; }
 

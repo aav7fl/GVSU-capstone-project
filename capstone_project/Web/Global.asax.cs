@@ -23,7 +23,7 @@ namespace Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configure(this.ConfigureJson);
-            Database.SetInitializer<Models.ApplicationDbContext>(null);
+            //Database.SetInitializer<Models.ApplicationDbContext>(null);
         }
 
         private void ConfigureJson(HttpConfiguration config)
