@@ -21,7 +21,7 @@ namespace Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalConfiguration.Configure(ConfigureJson);
+            GlobalConfiguration.Configure(this.ConfigureJson);
         }
 
         private void ConfigureJson(HttpConfiguration config)
