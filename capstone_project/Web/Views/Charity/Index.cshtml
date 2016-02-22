@@ -1,8 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
 
-@model Web.Models.UpdateVolunteerProfile
+@model Web.Models.UpdateCharityProfile
 @{
-    ViewBag.Title = "Volunteer profile";
+    ViewBag.Title = "Charity profile";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -13,21 +13,21 @@
     @Html.AntiForgeryToken()
     <h4>Profile information</h4>
     <hr />
-        @Html.Label(String.Empty, "User: " + User.Identity.GetUserName())
-        <div class="form-group">
-            @Html.LabelFor(m => m.Hours, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(m => m.Hours, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
-            </div>
+    @Html.Label(String.Empty, "User: " + User.Identity.GetUserName())
+    <div class="form-group">
+        @Html.LabelFor(m => m.Hours, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(m => m.Hours, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
         </div>
-        <br/>
+    </div>
+        <br />
         <div class="form-group">
             @Html.LabelFor(m => m.Rating, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.DisplayFor(m => m.Rating, null, "Rating", new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
-        <br/>
+        <br />
         <div class="form-group">
             @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
