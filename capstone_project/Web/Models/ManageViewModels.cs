@@ -5,18 +5,23 @@ using Microsoft.Owin.Security;
 
 namespace Web.Models
 {
-    public class IndexViewModel
+    public class ManageViewModels
     {
         public bool HasPassword { get; set; }
+
         public IList<UserLoginInfo> Logins { get; set; }
+
         public string PhoneNumber { get; set; }
+
         public bool TwoFactor { get; set; }
+
         public bool BrowserRemembered { get; set; }
     }
 
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
+
         public IList<AuthenticationDescription> OtherLogins { get; set; }
     }
 
@@ -64,35 +69,6 @@ namespace Web.Models
         [Phone]
         [Display(Name = "Phone Number")]
         public string Number { get; set; }
-    }
-
-    public class UpdateVolunteerProfile
-    {
-        [Display(Name = "Total Hours")]
-        public int Hours { get; set; }
-
-        [Range(1, 5)]
-        [Display(Name = "Rating (1-5)")]
-        public int Rating { get; set; }
-
-        [Display(Name = "Short description")]
-        public string ShortDescription { get; set; }
-    }
-
-    public class UpdateCharityProfile
-    {
-        [Display(Name = "Charity name")]
-        public string CharityName { get; set; }
-
-        [Display(Name = "Total Hours")]
-        public int Hours { get; set; }
-
-        [Range(1, 5)]
-        [Display(Name = "Rating (1-5)")]
-        public int Rating { get; set; }
-
-        [Display(Name = "Short description")]
-        public string ShortDescription { get; set; }
     }
 
     public class VerifyPhoneNumberViewModel

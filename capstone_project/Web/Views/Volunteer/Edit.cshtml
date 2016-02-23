@@ -1,11 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
 
-@model Web.Models.UpdateVolunteerProfile
+@model Web.Models.VolunteerViewModel.UpdateVolunteerProfile
 @{
     ViewBag.Title = "Volunteer profile";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("Index", "Volunteer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

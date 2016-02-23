@@ -261,18 +261,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201602201641358_InitialCreate.cs" />
-    <Compile Include="Migrations\201602201641358_InitialCreate.Designer.cs">
-      <DependentUpon>201602201641358_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602221611445_Initial.cs" />
-    <Compile Include="Migrations\201602221611445_Initial.Designer.cs">
-      <DependentUpon>201602221611445_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CharityViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\VolunteerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -387,14 +380,6 @@
       <Project>{bcdf2b92-b2c4-4fdc-8687-63e899dc44c8}</Project>
       <Name>Simulators</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602201641358_InitialCreate.resx">
-      <DependentUpon>201602201641358_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602221611445_Initial.resx">
-      <DependentUpon>201602221611445_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
