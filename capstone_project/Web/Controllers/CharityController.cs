@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-    public class VolunteerController : Controller
+    public class CharityController : Controller
     {
-        // GET: Volunteer
+        // GET: Charity
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Volunteer Edit
+        // GET: Charity Edit
         public ActionResult Edit()
         {
             return View();
