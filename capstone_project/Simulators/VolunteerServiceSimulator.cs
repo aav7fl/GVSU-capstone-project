@@ -7,54 +7,41 @@
     using System.Threading.Tasks;
     using GVSU.BusinessLogic;
     using GVSU.Contracts;
-    using Serialization;
+    using Serialization.DTO;
+
     public class VolunteerServiceSimulator : IVolunteerService
     {
-        private readonly IDictionary<int, IVolunteer> volunteerList;
+        private readonly IDictionary<int, IVolunteer> _volunteerList;
 
         public VolunteerServiceSimulator()
         {
-            volunteerList = new Dictionary<int, IVolunteer>()
-            {
-                { 1, new Volunteer()
-                    {
-                        Id = 1,
-                        User = new User()
-                        {
-                            FirstName = "Simulated",
-                            LastName = "User",
-                        }
-                    }
-                }
-            };
+            _volunteerList = new Dictionary<int, IVolunteer>();
         }
 
-        public string CreateVolunteer(IVolunteer volunteer)
+        public int CreateVolunteer(IVolunteer volunteer)
         {
-            volunteerList.Add(volunteer.Id, volunteer);
-            return "1";
+            _volunteerList.Add(volunteer.Id, volunteer);
+            return volunteer.Id;
         }
 
-        public string DeleteVolunteerById(int id)
+        public void DeleteVolunteerById(int id)
         {
-            volunteerList.Remove(id);
-            return "";
+            _volunteerList.Remove(id);
         }
 
         public IEnumerable<IVolunteer> GetAllVolunteers()
         {
-            return volunteerList.Values;
+            return _volunteerList.Values;
         }
 
         public IVolunteer GetVolunteerById(int id)
         {
-            return volunteerList[id];
+            return _volunteerList[id];
         }
 
-        public string UpdateVolunteer(IVolunteer volunteer)
+        public void UpdateVolunteer(IVolunteer volunteer)
         {
-            volunteerList[volunteer.Id] = volunteer;
-            return "";
+            _volunteerList[volunteer.Id] = volunteer;
         }
     }
 }
