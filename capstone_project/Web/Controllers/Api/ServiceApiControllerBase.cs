@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using GVSU.BusinessLogic;
 
-namespace Web.Controllers
+namespace Web.Api.Controllers
 {
     public class ServiceApiControllerBase<T> : ApiController
     {
