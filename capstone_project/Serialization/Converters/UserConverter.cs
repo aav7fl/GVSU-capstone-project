@@ -3,7 +3,7 @@
     using GVSU.Contracts;
     using GVSU.Serialization.DTO;
 
-    public class VolunteerConverter : JsonBaseConverter<IVolunteer, Volunteer>
+    public class UserConverter : JsonBaseConverter<IUser, User>
     {
     }
 }
