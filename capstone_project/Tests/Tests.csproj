@@ -61,7 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AssemblyInitializers.cs" />
-    <Compile Include="SerivceTestBase.cs" />
+    <Compile Include="ServiceTestBase.cs" />
     <Compile Include="TestVolunteerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
