@@ -15,11 +15,10 @@
             return View();
         }
 
-        /**
-        [HttpPost]
-        public ActionResult CreateVolunteer(ViewModel volunteerViewModel) {
-            this.Service.CreateVolunteer(volunteer);
+        // GET: Volunteer Edit
+        public ActionResult Edit()
+        {
+            return View();
         }
-    **/
     }
 }

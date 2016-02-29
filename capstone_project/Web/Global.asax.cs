@@ -11,7 +11,6 @@ using GVSU.Data;
 using GVSU.Serialization.Converters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Web.Models;
 
 namespace Web
 {
@@ -25,7 +24,6 @@ namespace Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configure(this.ConfigureJson);
-
             //Database.SetInitializer<ApplicationDbContext>(null);
         }
 

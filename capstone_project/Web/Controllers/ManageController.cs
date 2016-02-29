@@ -32,6 +32,7 @@ namespace Web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
+
             private set 
             { 
                 _signInManager = value; 
@@ -44,6 +45,7 @@ namespace Web.Controllers
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
+
             private set
             {
                 _userManager = value;
@@ -64,7 +66,7 @@ namespace Web.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var model = new IndexViewModel
+            var model = new ManageViewModels
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),

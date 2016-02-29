@@ -9,7 +9,7 @@
     public interface IVolunteer
     {
         int Id { get; }
-
+        
         IUser User { get; }
 
         string FirstName { get; }
