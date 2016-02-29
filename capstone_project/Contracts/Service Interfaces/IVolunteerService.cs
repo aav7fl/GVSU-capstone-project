@@ -12,10 +12,10 @@
 
         IEnumerable<IVolunteer> GetAllVolunteers();
 
-        string CreateVolunteer(IVolunteer volunteer);
+        int CreateVolunteer(IVolunteer volunteer);
 
-        string UpdateVolunteer(IVolunteer volunteer);
+        void UpdateVolunteer(IVolunteer volunteer);
 
-        string DeleteVolunteerById(int id);
+        void DeleteVolunteerById(int id);
     }
 }

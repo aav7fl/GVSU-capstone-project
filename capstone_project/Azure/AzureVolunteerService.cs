@@ -24,13 +24,13 @@ namespace GVSU.Azure
                 .GetContainerReference("volunteers");
         }
 
-        public override string CreateVolunteer(IVolunteer volunteer)
+        public override int CreateVolunteer(IVolunteer volunteer)
         {
             _store.CreateIfNotExists();
             var blob = _store.GetBlockBlobReference($"{volunteer.Id}.txt");
             var json = JsonConvert.SerializeObject(volunteer);
             blob.UploadText(json);
-            return "1";
+            return volunteer.Id;
         }
 
         public override IVolunteer GetVolunteerById(int id)

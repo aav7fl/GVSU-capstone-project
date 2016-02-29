@@ -12,5 +12,12 @@
 
         IUser User { get; }
 
+        string FirstName { get; }
+
+        string LastName { get; }
+
+        string Description { get; }
+
+        bool IsActive { get; }
     }
 }

@@ -15,14 +15,14 @@ namespace GVSU.Contracts.Decorators
             _service = service;
         }
 
-        public virtual string CreateVolunteer(IVolunteer volunteer)
+        public virtual int CreateVolunteer(IVolunteer volunteer)
         {
             return _service.CreateVolunteer(volunteer);
         }
 
-        public virtual string DeleteVolunteerById(int id)
+        public virtual void DeleteVolunteerById(int id)
         {
-            return _service.DeleteVolunteerById(id);
+            _service.DeleteVolunteerById(id);
         }
 
         public virtual IEnumerable<IVolunteer> GetAllVolunteers()
@@ -35,9 +35,9 @@ namespace GVSU.Contracts.Decorators
             return _service.GetVolunteerById(id);
         }
 
-        public virtual string UpdateVolunteer(IVolunteer volunteer)
+        public virtual void UpdateVolunteer(IVolunteer volunteer)
         {
-            return _service.UpdateVolunteer(volunteer);
+            _service.UpdateVolunteer(volunteer);
         }
     }
 }

@@ -8,12 +8,14 @@ namespace GVSU.Contracts
 {
     public interface IUser
     {
-        int Id { get; set; }
+        Guid Id { get; }
 
-        string FirstName { get; set; }
+        string FirstName { get; }
 
-        string LastName { get; set; }
+        string LastName { get; }
 
-        IContactInfo ContactInfo { get; set; }
+        bool IsFirstLogin { get; }
+
+        DateTime CreatedAt { get; }
     }
 }

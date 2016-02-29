@@ -42,17 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorators\CharityServiceDecorator.cs" />
     <Compile Include="Decorators\VolunteerServiceDecorator.cs" />
-    <Compile Include="Entities\ICharity.cs" />
-    <Compile Include="Entities\IContactInfo.cs" />
-    <Compile Include="Entities\IHour.cs" />
-    <Compile Include="Entities\ILocation.cs" />
-    <Compile Include="Entities\ISkill.cs" />
-    <Compile Include="Entities\IUser.cs" />
-    <Compile Include="Entities\IVolunteer.cs" />
+    <Compile Include="Domain Interfaces\ICharity.cs" />
+    <Compile Include="Domain Interfaces\IContactInfo.cs" />
+    <Compile Include="Domain Interfaces\IHour.cs" />
+    <Compile Include="Domain Interfaces\ILocation.cs" />
+    <Compile Include="Domain Interfaces\ISkill.cs" />
+    <Compile Include="Domain Interfaces\IUser.cs" />
+    <Compile Include="Domain Interfaces\IVolunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ICharityService.cs" />
-    <Compile Include="Services\IVolunteerService.cs" />
+    <Compile Include="Service Interfaces\ICharityService.cs" />
+    <Compile Include="Service Interfaces\IVolunteerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

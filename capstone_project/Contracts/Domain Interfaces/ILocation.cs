@@ -8,9 +8,10 @@
 
     public interface ILocation
     {
+        int Id { get; }
 
         string Name { get; }
-        
+
         string ShortDescription { get; }
 
         string AddressLine1 { get; }
@@ -24,6 +25,5 @@
         string ZipCode { get; }
 
         string Country { get; }
-
     }
 }
