@@ -1,9 +1,12 @@
 ﻿using GVSU.Azure;
 using GVSU.BusinessLogic;
 using GVSU.Contracts;
+using GVSU.Data;
+using GVSU.Data.Services;
 using GVSU.Simulators;
 using Microsoft.Owin;
 using Owin;
+using System.Web;
 
 [assembly: OwinStartupAttribute(typeof(Web.Startup))]
 namespace Web
@@ -18,7 +21,7 @@ namespace Web
 
         public void InitializeFactories()
         {
-            Factory.Register<IVolunteerService>(() => new AzureVolunteerService(new VolunteerServiceSimulator()));
+            Factory.Register<IVolunteerService>(() => new SQLVolunteerService(new VolunteerServiceSimulator()));
         }
     }
 }

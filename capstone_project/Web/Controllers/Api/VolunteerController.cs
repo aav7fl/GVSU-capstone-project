@@ -64,8 +64,8 @@
         {
             try
             {
-                // TO-DO: replace with Created 201 response
-                return Ok(this.Service.UpdateVolunteer(volunteer));
+                this.Service.UpdateVolunteer(volunteer);
+                return StatusCode(HttpStatusCode.Created);
             }
             catch (Exception)
             {
