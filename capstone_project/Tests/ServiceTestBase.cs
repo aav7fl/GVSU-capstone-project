@@ -7,11 +7,11 @@ using GVSU.BusinessLogic;
 
 namespace GVSU.Tests
 {
-    public class SerivceTestBase<T>
+    public class ServiceTestBase<T>
     {
         protected T Service { get; }
 
-        protected SerivceTestBase()
+        protected ServiceTestBase()
         {
             Service = Factory.GetService<T>();
         }
