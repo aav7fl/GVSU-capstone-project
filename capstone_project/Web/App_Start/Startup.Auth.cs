@@ -1,7 +1,6 @@
 ﻿namespace Web
 {
     using System;
-    using System.Configuration;
     using GVSU.Contracts;
     using GVSU.Data;
     using GVSU.Data.Services;
@@ -21,14 +20,14 @@
         public void ConfigureAuth(IAppBuilder app)
         {
 
-            string connectionString;
+            string dbConnection;
 #if DEBUG
-            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            dbConnection = "DefaultConnection";
 #else
-            connectionString = ConfigurationManager.ConnectionStrings["AzureSQLServerConnection"].ConnectionString;
+            dbConnection = "AzureSQLServerConnection";
 #endif
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(() => ApplicationDbContext.Create(connectionString));
+            app.CreatePerOwinContext(() => ApplicationDbContext.Create(dbConnection));
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
