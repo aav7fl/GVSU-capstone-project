@@ -97,12 +97,30 @@ namespace GVSU.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Description = c.String(),
+                        ZipCode = c.Int(),
                         IsActive = c.Boolean(nullable: false),
                         User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Users", t => t.User_Id, cascadeDelete: true)
                 .Index(t => t.User_Id);
+            
+            CreateTable(
+                "dbo.Hours",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        StartTime = c.DateTime(nullable: false),
+                        EndTime = c.DateTime(nullable: false),
+                        Verified = c.Boolean(nullable: false),
+                        Charity_Id = c.Int(),
+                        Volunteer_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Charities", t => t.Charity_Id)
+                .ForeignKey("dbo.Volunteers", t => t.Volunteer_Id)
+                .Index(t => t.Charity_Id)
+                .Index(t => t.Volunteer_Id);
             
             CreateTable(
                 "dbo.Roles",
@@ -122,9 +140,13 @@ namespace GVSU.Data.Migrations
             DropForeignKey("dbo.UserLogins", "IdentityUser_Id", "dbo.Users");
             DropForeignKey("dbo.UserClaims", "IdentityUser_Id", "dbo.Users");
             DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
+            DropForeignKey("dbo.Hours", "Volunteer_Id", "dbo.Volunteers");
+            DropForeignKey("dbo.Hours", "Charity_Id", "dbo.Charities");
             DropForeignKey("dbo.Charities", "CreatedBy_Id", "dbo.Users");
             DropForeignKey("dbo.Volunteers", "User_Id", "dbo.Users");
             DropIndex("dbo.Roles", "RoleNameIndex");
+            DropIndex("dbo.Hours", new[] { "Volunteer_Id" });
+            DropIndex("dbo.Hours", new[] { "Charity_Id" });
             DropIndex("dbo.Volunteers", new[] { "User_Id" });
             DropIndex("dbo.UserRoles", new[] { "IdentityUser_Id" });
             DropIndex("dbo.UserRoles", new[] { "RoleId" });
@@ -132,6 +154,7 @@ namespace GVSU.Data.Migrations
             DropIndex("dbo.UserClaims", new[] { "IdentityUser_Id" });
             DropIndex("dbo.Charities", new[] { "CreatedBy_Id" });
             DropTable("dbo.Roles");
+            DropTable("dbo.Hours");
             DropTable("dbo.Volunteers");
             DropTable("dbo.UserRoles");
             DropTable("dbo.UserLogins");

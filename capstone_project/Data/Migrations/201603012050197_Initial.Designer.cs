@@ -13,7 +13,7 @@ namespace GVSU.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602290743291_Initial"; }
+            get { return "201603012050197_Initial"; }
         }
         
         string IMigrationMetadata.Source

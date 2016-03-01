@@ -19,6 +19,7 @@ namespace GVSU.Data {
         /// </summary>
         public ApplicationDbContext()
             :base("DefaultConnection", throwIfV1Schema: false) {
+            //:base("LocalConnection", throwIfV1Schema: false) {
             //:base("AzureSQLServerConnection", throwIfV1Schema: false) {
         }
 
