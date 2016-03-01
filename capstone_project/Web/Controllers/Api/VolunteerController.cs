@@ -41,7 +41,7 @@
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return InternalServerError();
             }
@@ -65,9 +65,12 @@
             try
             {
                 this.Service.UpdateVolunteer(volunteer);
-                return StatusCode(HttpStatusCode.Created);
+                return StatusCode(HttpStatusCode.NoContent);
             }
-            catch (Exception)
+            catch (InvalidOperationException e) {
+                return BadRequest();
+            }
+            catch (Exception e)
             {
                 return InternalServerError();
             }

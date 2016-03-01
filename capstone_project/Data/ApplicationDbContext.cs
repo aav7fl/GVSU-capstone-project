@@ -14,17 +14,33 @@ namespace GVSU.Data {
 
    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        /// <summary>
+        /// Default constructor used for running EF migrations
+        /// </summary>
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            :base("DefaultConnection", throwIfV1Schema: false) {
+            //:base("AzureSQLServerConnection", throwIfV1Schema: false) {
+        }
+
+        /// <summary>
+        /// Constructor used by Web Project with dynamic connection string
+        /// </summary>
+        /// <param name="connectionString"></param>
+        public ApplicationDbContext(string connectionString)
+            : base(connectionString, throwIfV1Schema: false)
         {
             // uncomment if we need to serialize an entity, since lazy loading will break serialization
             // this.Configuration.LazyLoadingEnabled = false; 
         }
 
-        public static ApplicationDbContext Create()
+        public static ApplicationDbContext Create(string connectionString)
         {
-            return new ApplicationDbContext();
+            return new ApplicationDbContext(connectionString);
         }
+
+        public System.Data.Entity.DbSet<Volunteer> Volunteers { get; set; }
+        public System.Data.Entity.DbSet<Charity> Charities { get; set; }
+        public System.Data.Entity.DbSet<Hour> Hours { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,15 +55,8 @@ namespace GVSU.Data {
 
             modelBuilder.Entity<Volunteer>()
                 .HasRequired<ApplicationUser>(v => v.User)
-                .WithOptional(u => u.Volunteer)
+                .WithRequiredDependent(u => u.Volunteer)
                 .WillCascadeOnDelete();
-
         }
-        public System.Data.Entity.DbSet<Volunteer> Volunteers { get; set; }
-
-        public System.Data.Entity.DbSet<Charity> Charities { get; set; }
-
-
-        //public System.Data.Entity.DbSet<GVSU.Serialization.ContactInfo> ContactInfoes { get; set; }
     }
 }

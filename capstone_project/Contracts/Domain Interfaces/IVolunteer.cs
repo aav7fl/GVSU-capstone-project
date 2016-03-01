@@ -16,6 +16,8 @@
 
         string LastName { get; }
 
+        int? ZipCode { get; }
+
         string Description { get; }
 
         bool IsActive { get; }

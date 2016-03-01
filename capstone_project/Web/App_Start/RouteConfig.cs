@@ -13,6 +13,8 @@ namespace Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             // Default route
             routes.MapRoute(
                 name: "Default",

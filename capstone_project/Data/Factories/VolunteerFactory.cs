@@ -16,25 +16,33 @@ namespace GVSU.Data.Factories
         }
 
         public IVolunteer CreateVolunteer(Volunteer volunteer) {
+
+            if (volunteer == null) return null;
+
             return new Serialization.DTO.Volunteer
             {
                 Id = volunteer.Id,
                 FirstName = volunteer.User.FirstName,
                 LastName = volunteer.User.LastName,
                 Description = volunteer.Description,
+                ZipCode = volunteer.ZipCode,
                 IsActive = volunteer.IsActive
             };
         }
 
         public Volunteer CreateVolunteer(IVolunteer volunteerDTO) {
+
+            if (volunteerDTO == null) return null;
+
             return new Volunteer
             {
                 Id = volunteerDTO.Id,
-                User = new ApplicationUser {
+                User = {
                     FirstName = volunteerDTO.FirstName,
                     LastName = volunteerDTO.LastName
                 },
                 Description = volunteerDTO.Description,
+                ZipCode = volunteerDTO.ZipCode,
                 IsActive = volunteerDTO.IsActive
             };
         }

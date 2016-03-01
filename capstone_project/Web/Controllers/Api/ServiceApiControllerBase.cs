@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using GVSU.BusinessLogic;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Web.Api.Controllers
 {

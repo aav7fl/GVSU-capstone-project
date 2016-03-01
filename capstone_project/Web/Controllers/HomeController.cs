@@ -13,6 +13,7 @@ namespace Web.Controllers
             return View();
         }
 
+        [Route("About")]
         public ActionResult About()
         {
             ViewBag.Message = "Our vision for Charma";
@@ -20,6 +21,7 @@ namespace Web.Controllers
             return View();
         }
 
+        [Route("Contact")]
         public ActionResult Contact()
         {
             ViewBag.Message = "How to contact us";

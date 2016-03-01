@@ -9,11 +9,18 @@
 
     public class Volunteer
     {
+        public Volunteer() {
+            IsActive = true;
+            ZipCode = null;
+        }
+
         public int Id { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
         public string Description { get; set; }
+
+        public int? ZipCode { get; set; }
 
         public bool IsActive { get; set; }
     }

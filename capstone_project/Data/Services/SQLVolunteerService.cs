@@ -16,15 +16,16 @@
         private readonly ApplicationDbContext _store;
         private readonly VolunteerFactory _volunteerFactory = new VolunteerFactory();
 
-        public SQLVolunteerService(IVolunteerService service)
+        public SQLVolunteerService(IVolunteerService service, ApplicationDbContext dbContext)
             : base(service)
         {
-            _store = new ApplicationDbContext(); // TO-DO: inject dbcontext, rather than instantiate new one
+            _store = dbContext;
         }
 
         public override IEnumerable<IVolunteer> GetAllVolunteers()
         {
-            return _store.Volunteers.Select(e => _volunteerFactory.CreateVolunteer(e));
+            IEnumerable<Volunteer> v = _store.Volunteers.ToList();
+            return v.Select(e => _volunteerFactory.CreateVolunteer(e));
         }
 
         public override IVolunteer GetVolunteerById(int id)
@@ -34,7 +35,8 @@
 
         public override int CreateVolunteer(IVolunteer volunteerDTO)
         {
-            Volunteer v = _store.Volunteers.Add(_volunteerFactory.CreateVolunteer(volunteerDTO));
+            Volunteer v = _volunteerFactory.CreateVolunteer(volunteerDTO);
+            v = _store.Volunteers.Add(v);
             _store.SaveChanges();
             return v.Id;
         }

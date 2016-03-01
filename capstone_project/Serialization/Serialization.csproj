@@ -60,7 +60,6 @@
     <Compile Include="Converters\LocationConverter.cs" />
     <Compile Include="Converters\UserConverter.cs" />
     <Compile Include="DTO\Charity.cs" />
-    <Compile Include="DTO\ContactInfo.cs" />
     <Compile Include="Converters\CharityConverter.cs" />
     <Compile Include="Converters\JsonBaseConverter.cs" />
     <Compile Include="Converters\VolunteerConverter.cs" />

@@ -1,9 +1,9 @@
-﻿using GVSU.Azure;
-using GVSU.BusinessLogic;
+﻿using GVSU.BusinessLogic;
 using GVSU.Contracts;
 using GVSU.Data;
 using GVSU.Data.Services;
 using GVSU.Simulators;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Owin;
 using System.Web;
@@ -16,12 +16,14 @@ namespace Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            InitializeFactories();
+            InitializeFactories(app);
         }
 
-        public void InitializeFactories()
+        public void InitializeFactories(IAppBuilder app)
         {
-            Factory.Register<IVolunteerService>(() => new SQLVolunteerService(new VolunteerServiceSimulator()));
+            Factory.Register<IVolunteerService>(() => new SQLVolunteerService(
+                new VolunteerServiceSimulator(),
+                HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()));
         }
     }
 }

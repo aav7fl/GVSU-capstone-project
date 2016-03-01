@@ -14,6 +14,11 @@ namespace GVSU.Data
     {
         // Inherited Properties: UserId, UserName, Email, EmailConfirmed ...
 
+        public ApplicationUser() {
+            IsFirstLogin = true;
+            CreatedAt = DateTime.Now;        
+        }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -24,12 +29,16 @@ namespace GVSU.Data
 
         public virtual Volunteer Volunteer { get; set; }
 
-        // TO-DO: Put in static utility class, and pass in ApplicationUser as parameter
+        // TO-DO: Put function in static utility class, and pass in ApplicationUser as parameter
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
+
+            // TO-DO: Add application user fields as claim type
+            // userIdentity.AddClaim(new Claim(ClaimTypes.GivenName, your_profile == null ? string.Empty : your_profile.FirstName));
+            // userIdentity.AddClaim(new Claim(ClaimTypes.Surname, your_profile == null ? string.Empty : your_profile.LastName));
+
             return userIdentity;
         }
     }

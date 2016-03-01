@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Web.Models
 {
-    public class CharityViewModel : Controller
+    public class CharityViewModel
     {
         public class UpdateCharityProfile
         {

@@ -4,13 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GVSU.Contracts;
 
 namespace Web.Models
 {
-    public class VolunteerViewModel : Controller
+    public class VolunteerViewModel
     {
-        public class UpdateVolunteerProfile
-        {
+            public IVolunteer Volunteer { get; set; }
+
             [Display(Name = "Total Hours")]
             public int Hours { get; set; }
 
@@ -20,6 +21,5 @@ namespace Web.Models
 
             [Display(Name = "Short description")]
             public string ShortDescription { get; set; }
-        }
     }
 }
