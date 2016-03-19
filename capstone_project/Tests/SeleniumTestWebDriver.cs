@@ -9,6 +9,7 @@ namespace GVSU.Tests
     [TestClass]
     public class SeleniumTestWebDriver
     {
+
         [TestMethod]
         public void TestFirefoxDriver()
         {
@@ -24,5 +25,6 @@ namespace GVSU.Tests
             AssemblyInitializers.driverGC.FindElement(By.Id("lst-ib")).SendKeys("Selenium");
             AssemblyInitializers.driverGC.FindElement(By.Id("lst-ib")).SendKeys(Keys.Enter);
         }
+
     }
 }

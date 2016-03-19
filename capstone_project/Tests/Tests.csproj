@@ -72,6 +72,8 @@
     <Compile Include="TestVolunteerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeleniumTestWebDriver.cs" />
+    <Compile Include="WebsiteHomePageFF.cs" />
+    <Compile Include="WebsiteHomePageGC.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">

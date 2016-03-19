@@ -26,5 +26,12 @@ namespace GVSU.Tests
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
         }
+
+        [AssemblyCleanup]
+        public static void TearDown()
+        {
+            driverFF.Quit(); //exit Firefox selenium driver at the end of the test
+            driverGC.Quit(); //exit Google Chrome selenium driver at the end of the test
+        }
     }
 }
