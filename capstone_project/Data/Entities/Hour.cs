@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using System.Text;
@@ -10,19 +11,24 @@
     public class Hour
     {
         public Hour() {
-            StartTime = DateTime.Now;
-            EndTime = DateTime.Now;
-            Verified = false;
         }
         public int Id { get; set; }
 
+        public int? VolunteerId { get; set; }
+
+        [ForeignKey("VolunteerId")]
         public Volunteer Volunteer { get; set; }
 
+        public int? CharityId { get; set; }
+
+        [ForeignKey("CharityId")]
         public Charity Charity { get; set; }
 
-        public DateTime StartTime { get; set; }
+        [Required]
+        public DateTime? StartTime { get; set; }
 
-        public DateTime EndTime { get; set; }
+        [Required]
+        public DateTime? EndTime { get; set; }
 
         public bool Verified { get; set; }
     }

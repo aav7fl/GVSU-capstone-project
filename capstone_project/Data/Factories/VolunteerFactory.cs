@@ -10,12 +10,10 @@ namespace GVSU.Data.Factories
     using GVSU.Data.Entities;
     using GVSU.Contracts;
 
-    public class VolunteerFactory
+    public static class VolunteerFactory
     {
-        public VolunteerFactory() {
-        }
 
-        public IVolunteer CreateVolunteer(Volunteer volunteer) {
+        public static IVolunteer CreateVolunteer(Volunteer volunteer) {
 
             if (volunteer == null) return null;
 
@@ -25,22 +23,19 @@ namespace GVSU.Data.Factories
                 FirstName = volunteer.User.FirstName,
                 LastName = volunteer.User.LastName,
                 Description = volunteer.Description,
+                Email = volunteer.User.Email,
                 ZipCode = volunteer.ZipCode,
                 IsActive = volunteer.IsActive
             };
         }
 
-        public Volunteer CreateVolunteer(IVolunteer volunteerDTO) {
+        public static Volunteer CreateVolunteer(IVolunteer volunteerDTO) {
 
             if (volunteerDTO == null) return null;
 
             return new Volunteer
             {
                 Id = volunteerDTO.Id,
-                User = {
-                    FirstName = volunteerDTO.FirstName,
-                    LastName = volunteerDTO.LastName
-                },
                 Description = volunteerDTO.Description,
                 ZipCode = volunteerDTO.ZipCode,
                 IsActive = volunteerDTO.IsActive
