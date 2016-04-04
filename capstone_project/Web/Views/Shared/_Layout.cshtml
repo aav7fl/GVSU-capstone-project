@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Charma</title>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,700' rel='stylesheet' type='text/css'/>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
 
     <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -22,8 +24,9 @@
     <header>
         @Html.Partial("_Header")
     </header>
-    <div class="body-content">
+    <div class="container body-content">
         @RenderBody()
+
     </div>
     <footer>
         @Html.Partial("_Footer")
