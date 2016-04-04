@@ -25,7 +25,9 @@ namespace Web.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(
+            ApplicationUserManager userManager,
+            ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -155,7 +157,8 @@ namespace Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
-                {   FirstName = model.FirstName,
+                {
+                    FirstName = model.FirstName,
                     LastName = model.LastName,
                     UserName = model.Email,
                     Email = model.Email,
@@ -382,7 +385,12 @@ namespace Web.Controllers
                 var user = new ApplicationUser {
                     UserName = model.Email,
                     Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
                     Volunteer = new Volunteer()
+                    {
+                         ZipCode = model.ZipCode,
+                    }
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
