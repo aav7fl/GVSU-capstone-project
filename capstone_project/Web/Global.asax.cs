@@ -20,10 +20,17 @@ namespace Web
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            //Routing
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //JSON formatters
             GlobalConfiguration.Configure(this.ConfigureJson);
+
+            //Bundles
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 

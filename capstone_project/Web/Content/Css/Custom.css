@@ -1,0 +1,91 @@
+﻿/**
+    COLOR PALETTE
+    Gray:   #323A45
+    Blue:   #00AFD1
+    Teal:   #1FBBA6
+    Orange: #F27935
+    Red:    #D64541
+**/
+body, h1, h2, h3, h4, h5, h6  {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+}
+
+h1  {
+    font-weight: 700;
+    text-align: center;
+}
+
+p {
+    font-size: medium;
+}
+
+/**
+ * BUTTONS
+ */
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn-primary {
+    background-color: #F27935;
+    border-color: #F27935;
+}
+
+.btn-primary:hover {
+    background-color: #dc6109;
+    border-color: #dc6109;
+}
+
+
+/**
+ * PALETTE COLORS
+ */
+
+.gray {
+    background-color: #323A45;
+}
+
+.blue {
+    background-color: #00AFD1;
+}
+
+.teal {
+    background-color: #1FBBA6;
+}
+
+.orange {
+    background-color: #F27935; 
+}
+
+.red {
+    background-color: #D64541;
+    
+}
+
+p .gray {
+    color: #323A45;
+}
+
+p .blue {
+    color: #00AFD1;
+}
+
+p .teal {
+    color: #1FBBA6;
+}
+
+p .orange {
+    color: #F27935; 
+}
+
+p .red {
+    color: #D64541;
+    
+}
+
+
+form {
+    margin: auto;
+}
