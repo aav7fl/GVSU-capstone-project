@@ -10,53 +10,127 @@
     using GVSU.Contracts.Decorators;
     using GVSU.Data.Entities;
     using GVSU.Data.Factories;
-
-    public class SQLVolunteerService : VolunteerServiceDecorator
+    using System;
+    public class SQLVolunteerService : IVolunteerService, IDisposable
     {
         private readonly ApplicationDbContext _store;
-        private readonly VolunteerFactory _volunteerFactory = new VolunteerFactory();
 
-        public SQLVolunteerService(IVolunteerService service, ApplicationDbContext dbContext)
-            : base(service)
+        public SQLVolunteerService(ApplicationDbContext dbContext)
         {
             _store = dbContext;
         }
 
-        public override IEnumerable<IVolunteer> GetAllVolunteers()
+        public IEnumerable<IVolunteer> GetAllVolunteers()
         {
-            IEnumerable<Volunteer> v = _store.Volunteers.ToList();
-            return v.Select(e => _volunteerFactory.CreateVolunteer(e));
+            IEnumerable<Volunteer> v = _store.Volunteers
+                .Include(e => e.User)
+                .ToList();
+
+            return v.Select(e => VolunteerFactory.CreateVolunteer(e));
         }
 
-        public override IVolunteer GetVolunteerById(int id)
+        public IVolunteer GetVolunteerById(int id)
         {
-            return _volunteerFactory.CreateVolunteer(_store.Volunteers.Find(id));
+            try
+            {
+                Volunteer volunteer = _store.Volunteers
+                    .Include(e => e.User)
+                    .Single(v => v.Id == id);
+                return VolunteerFactory.CreateVolunteer(volunteer);
+            }
+            catch (InvalidOperationException) {
+                return null;
+            }
+            
         }
 
-        public override int CreateVolunteer(IVolunteer volunteerDTO)
+        public int CreateVolunteer(IVolunteer volunteerDTO)
         {
-            Volunteer v = _volunteerFactory.CreateVolunteer(volunteerDTO);
+            Volunteer v = VolunteerFactory.CreateVolunteer(volunteerDTO);
             v = _store.Volunteers.Add(v);
             _store.SaveChanges();
             return v.Id;
         }
 
-        public override void UpdateVolunteer(IVolunteer volunteerDTO)
+        public void UpdateVolunteer(IVolunteer volunteerDTO)
         {
-            Volunteer oldV = _store.Volunteers.Include(x => x.User)
+            Volunteer oldV = _store.Volunteers
+                .Include(x => x.User)
                 .Single(x => x.Id == volunteerDTO.Id);
 
-            Volunteer newV = _volunteerFactory.CreateVolunteer(volunteerDTO);
-
-            _store.Entry(oldV).CurrentValues.SetValues(newV);
+            _store.Entry(oldV).CurrentValues.SetValues(volunteerDTO);
+            _store.Entry(oldV.User).CurrentValues.SetValues(
+                new {
+                    FirstName = volunteerDTO.FirstName,
+                    LastName = volunteerDTO.LastName,
+                    Email = volunteerDTO.Email
+                }
+            );
             _store.SaveChanges();
         }
 
-        public override void DeleteVolunteerById(int id)
+        public void DeleteVolunteerById(int id)
         {
-            Volunteer v = _store.Volunteers.Find(id);
-            _store.Volunteers.Remove(v);
+            Volunteer v = _store.Volunteers
+                .Include(e => e.User)
+                .Include(e => e.Charities)
+                .Single(x => x.Id == id);
+
+            _store.Users.Remove(v.User); //Cascades on delete
             _store.SaveChanges();
+        }
+
+        public IEnumerable<IHour> GetHoursByVolunteer(int id) {
+
+            IEnumerable<Hour> hours = _store.Hours
+                .Include(e => e.Charity)
+                .Include(e => e.Volunteer)
+                .Where(e => e.VolunteerId == id)
+                .ToList();
+
+            return hours.Select(e => HourFactory.CreateHour(e));
+        }
+
+        public int CreateHour(IHour hourDTO) {
+
+            Hour h = HourFactory.CreateHour(hourDTO);
+
+            Charity c = _store.Charities.SingleOrDefault(e => e.Id == hourDTO.Charity.Id);
+
+            if (c == null && hourDTO.Charity != null)
+                _store.Charities.Add(CharityFactory.CreateCharity(hourDTO.Charity));
+
+            h.VolunteerId = hourDTO.Volunteer.Id;
+            h.CharityId = hourDTO.Charity.Id;
+
+            _store.Hours.Add(h);
+            _store.SaveChanges();
+
+            return h.Id;
+        }
+
+        public void UpdateHour(IHour hourDTO)
+        {
+
+            Hour oldH = _store.Hours.Single(e => e.Id == hourDTO.Id);
+            
+            _store.Entry(oldH).CurrentValues.SetValues(hourDTO);
+
+            oldH.VolunteerId = hourDTO.Volunteer.Id;
+            oldH.CharityId = hourDTO.Charity.Id;
+
+            _store.SaveChanges();
+
+        }
+
+        public void DeleteHourById(int id) {
+            Hour hour = _store.Hours.Find(id);
+            _store.Hours.Remove(hour);
+            _store.SaveChanges();
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

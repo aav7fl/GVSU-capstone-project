@@ -43,5 +43,29 @@
         {
             _volunteerList[volunteer.Id] = volunteer;
         }
+
+        public void Dispose()
+        {
+        }
+
+        public IEnumerable<IHour> GetHoursByVolunteer(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CreateHour(IHour hourDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateHour(IHour hourDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteHourById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

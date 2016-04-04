@@ -20,11 +20,15 @@ namespace GVSU.Contracts
 
         string WebsiteURL { get; }
 
-        DateTime CreatedAt { get; }
+        DateTime? CreatedAt { get; }
 
         IUser CreatedBy { get; }
 
-        ILocation Locations { get; }
+        DateTime? UpdatedAt { get; }
+
+        IUser UpdatedBy { get; }
+
+        ICollection<ILocation> Locations { get; }
 
         bool Claimed { get; }
 

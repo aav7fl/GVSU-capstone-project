@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GVSU.Contracts.Decorators
 {
-    public class CharityServiceDecorator : ICharityService
+    public class CharityServiceDecorator : ICharityService, IDisposable
     {
         private readonly ICharityService _service;
 
@@ -38,6 +38,10 @@ namespace GVSU.Contracts.Decorators
         public virtual void UpdateCharity(ICharity charity)
         {
             _service.UpdateCharity(charity);
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

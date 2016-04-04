@@ -21,9 +21,11 @@ namespace Web
 
         public void InitializeFactories(IAppBuilder app)
         {
-            Factory.Register<IVolunteerService>(() => new SQLVolunteerService(
+            /**Factory.Register<IVolunteerService>(() =>
+                new SQLVolunteerService(
                 new VolunteerServiceSimulator(),
-                HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()));
+                HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()
+            ));**/
         }
     }
 }

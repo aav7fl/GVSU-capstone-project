@@ -9,34 +9,21 @@
     using System.Web.Http.Description;
     using GVSU.Contracts;
 
-    public class VolunteerController : ServiceApiControllerBase<IVolunteerService>
+    public class HourController : ServiceApiControllerBase<IVolunteerService>
     {
-        [ResponseType(typeof(IEnumerable<IVolunteer>))]
-        public IHttpActionResult Get()
-        {
-            try
-            {
-                return Ok(this.Service.GetAllVolunteers());
-            }
-            catch (Exception)
-            {
-                return InternalServerError();
-            }
-        }
-
         public IHttpActionResult Get(int id)
         {
             try
             {
-                var volunteer = this.Service.GetVolunteerById(id);
+                IEnumerable<IHour> hours = this.Service.GetHoursByVolunteer(id);
 
-                if (volunteer == null)
+                if (hours.Count() == 0)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    return Ok(volunteer);
+                    return Ok(hours);
                 }
 
             }
@@ -46,27 +33,28 @@
             }
         }
 
-        public IHttpActionResult Post([FromBody]IVolunteer volunteer)
+        public IHttpActionResult Post([FromBody]IHour hour)
         {
             try
             {
                 // TO-DO: replace with Created 201 response
-                return Ok(this.Service.CreateVolunteer(volunteer));
+                return Ok(this.Service.CreateHour(hour));
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return InternalServerError();
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]IVolunteer volunteer)
+        public IHttpActionResult Put(int id, [FromBody]IHour hour)
         {
             try
             {
-                this.Service.UpdateVolunteer(volunteer);
+                this.Service.UpdateHour(hour);
                 return StatusCode(HttpStatusCode.NoContent);
             }
-            catch (InvalidOperationException e) {
+            catch (InvalidOperationException e)
+            {
                 return BadRequest();
             }
             catch (Exception e)
@@ -79,7 +67,7 @@
         {
             try
             {
-                this.Service.DeleteVolunteerById(id);
+                this.Service.DeleteHourById(id);
                 return StatusCode(HttpStatusCode.NoContent);
 
                 // Return Not Found status if id is not found

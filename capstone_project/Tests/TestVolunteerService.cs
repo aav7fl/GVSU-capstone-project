@@ -15,10 +15,7 @@ namespace GVSU.Tests
         {
             var result = this.Service.CreateVolunteer(new Volunteer()
             {
-                User = new User {
-                     FirstName = "Test",
-                     LastName = "Insert"
-                }
+
             });
 
             result.GetType().ShouldBeEquivalentTo(typeof(int));

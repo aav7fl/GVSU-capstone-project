@@ -9,16 +9,16 @@
     using System.Web.Http.Description;
     using GVSU.Contracts;
 
-    public class VolunteerController : ServiceApiControllerBase<IVolunteerService>
+    public class CharityController : ServiceApiControllerBase<ICharityService>
     {
-        [ResponseType(typeof(IEnumerable<IVolunteer>))]
+        [ResponseType(typeof(IEnumerable<ICharity>))]
         public IHttpActionResult Get()
         {
             try
             {
-                return Ok(this.Service.GetAllVolunteers());
+                return Ok(this.Service.GetAllCharities());
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return InternalServerError();
             }
@@ -28,15 +28,15 @@
         {
             try
             {
-                var volunteer = this.Service.GetVolunteerById(id);
+                var charity = this.Service.GetCharityById(id);
 
-                if (volunteer == null)
+                if (charity == null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    return Ok(volunteer);
+                    return Ok(charity);
                 }
 
             }
@@ -46,27 +46,28 @@
             }
         }
 
-        public IHttpActionResult Post([FromBody]IVolunteer volunteer)
+        public IHttpActionResult Post([FromBody]ICharity charity)
         {
             try
             {
                 // TO-DO: replace with Created 201 response
-                return Ok(this.Service.CreateVolunteer(volunteer));
+                return Ok(this.Service.CreateCharity(charity));
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return InternalServerError();
             }
         }
 
-        public IHttpActionResult Put(int id, [FromBody]IVolunteer volunteer)
+        public IHttpActionResult Put(int id, [FromBody]ICharity charity)
         {
             try
             {
-                this.Service.UpdateVolunteer(volunteer);
+                this.Service.UpdateCharity(charity);
                 return StatusCode(HttpStatusCode.NoContent);
             }
-            catch (InvalidOperationException e) {
+            catch (InvalidOperationException e)
+            {
                 return BadRequest();
             }
             catch (Exception e)
@@ -79,7 +80,7 @@
         {
             try
             {
-                this.Service.DeleteVolunteerById(id);
+                this.Service.DeleteCharityById(id);
                 return StatusCode(HttpStatusCode.NoContent);
 
                 // Return Not Found status if id is not found
