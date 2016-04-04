@@ -9,16 +9,16 @@ namespace GVSU.Serialization.DTO
 
     public class Hour : IHour
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
-        public IVolunteer Volunteer { get; }
+        public IVolunteer Volunteer { get; set; }
 
-        public ICharity Charity { get; }
+        public ICharity Charity { get; set; }
 
-        public DateTime StartTime { get; }
+        public DateTime? StartTime { get; set; }
 
-        public DateTime EndTime { get; }
+        public DateTime? EndTime { get; set; }
 
-        public bool Verified { get; }
+        public bool Verified { get; set; }
     }
 }

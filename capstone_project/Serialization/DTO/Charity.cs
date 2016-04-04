@@ -19,11 +19,15 @@ namespace GVSU.Serialization.DTO
 
         public string WebsiteURL { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
         public IUser CreatedBy { get; set; }
 
-        public ILocation Locations { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+
+        public IUser UpdatedBy { get; set; }
+
+        public ICollection<ILocation> Locations { get; set; }
 
         public bool Claimed { get; set; }
 
