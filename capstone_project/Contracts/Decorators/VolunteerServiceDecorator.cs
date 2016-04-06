@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GVSU.Contracts.Decorators
 {
-    public class VolunteerServiceDecorator : IVolunteerService
+    public class VolunteerServiceDecorator
     {
         private readonly IVolunteerService _service;
 
@@ -38,6 +38,9 @@ namespace GVSU.Contracts.Decorators
         public virtual void UpdateVolunteer(IVolunteer volunteer)
         {
             _service.UpdateVolunteer(volunteer);
+        }
+
+        public virtual void Dispose() {
         }
     }
 }

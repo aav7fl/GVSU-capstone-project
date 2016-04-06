@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public interface IVolunteerService
+    public interface IVolunteerService : IDisposable
     {
         IVolunteer GetVolunteerById(int id);
 
@@ -17,5 +17,13 @@
         void UpdateVolunteer(IVolunteer volunteer);
 
         void DeleteVolunteerById(int id);
+
+        IEnumerable<IHour> GetHoursByVolunteer(int id);
+
+        int CreateHour(IHour hourDTO);
+
+        void UpdateHour(IHour hourDTO);
+
+        void DeleteHourById(int id);
     }
 }

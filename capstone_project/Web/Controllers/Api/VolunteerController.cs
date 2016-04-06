@@ -9,7 +9,6 @@
     using System.Web.Http.Description;
     using GVSU.Contracts;
 
-    [RoutePrefix("api")]
     public class VolunteerController : ServiceApiControllerBase<IVolunteerService>
     {
         [ResponseType(typeof(IEnumerable<IVolunteer>))]
@@ -85,7 +84,7 @@
 
                 // Return Not Found status if id is not found
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return InternalServerError();
             }

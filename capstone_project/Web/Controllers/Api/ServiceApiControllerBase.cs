@@ -10,11 +10,16 @@ namespace Web.Api.Controllers
 {
     public class ServiceApiControllerBase<T> : ApiController
     {
-        protected T Service { get; }
+        protected T Service {
+            get
+            {
+                return HttpContext.Current.GetOwinContext().Get<T>();
+            }
+        }
 
         protected ServiceApiControllerBase()
         {
-            Service = Factory.GetService<T>();
+            //Service = Factory.GetService<T>();
         }
     }
 }

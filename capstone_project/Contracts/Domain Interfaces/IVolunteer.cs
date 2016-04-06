@@ -9,16 +9,16 @@
     public interface IVolunteer
     {
         int Id { get; }
-        
-        IUser User { get; }
 
         string FirstName { get; }
 
         string LastName { get; }
 
-        int? ZipCode { get; }
-
         string Description { get; }
+
+        string Email { get; }
+
+        int? ZipCode { get; }
 
         bool IsActive { get; }
     }

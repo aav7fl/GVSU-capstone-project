@@ -43,5 +43,9 @@
         {
             _charityList[charity.Id] = charity;
         }
+
+        public void Dispose()
+        {
+        }
     }
 }

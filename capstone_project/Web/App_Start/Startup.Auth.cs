@@ -13,7 +13,7 @@
     using Owin;
     using Microsoft.Owin.Security.Twitter;
     using Microsoft.Owin.Security;
-
+    using System.Web;
     public partial class Startup
     {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
@@ -30,6 +30,16 @@
             app.CreatePerOwinContext(() => ApplicationDbContext.Create(dbConnection));
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+
+            app.CreatePerOwinContext<IVolunteerService>(() =>
+                new SQLVolunteerService(
+                HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()
+            ));
+            app.CreatePerOwinContext<ICharityService>(() =>
+                new SQLCharityService(
+                new CharityServiceSimulator(),
+                HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>()
+            ));
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider

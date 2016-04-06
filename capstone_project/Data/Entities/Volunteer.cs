@@ -23,5 +23,7 @@
         public int? ZipCode { get; set; }
 
         public bool IsActive { get; set; }
+
+        public virtual ICollection<Charity> Charities { get; set; }
     }
 }

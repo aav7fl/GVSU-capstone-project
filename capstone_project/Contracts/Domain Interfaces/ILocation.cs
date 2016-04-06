@@ -12,7 +12,7 @@
 
         string Name { get; }
 
-        string ShortDescription { get; }
+        string Description { get; }
 
         string AddressLine1 { get; }
 

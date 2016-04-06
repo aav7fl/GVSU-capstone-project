@@ -11,7 +11,7 @@
 
         public string Name { get; }
 
-        public string ShortDescription { get; }
+        public string Description { get; }
 
         public string AddressLine1 { get; }
 

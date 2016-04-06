@@ -3,6 +3,7 @@
 
 # Private Configuration files
 ConnectionStrings.config
+AppSettings.config
 
 # User-specific files
 *.suo

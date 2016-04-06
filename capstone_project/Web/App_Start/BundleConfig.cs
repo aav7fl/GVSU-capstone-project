@@ -23,9 +23,19 @@ namespace Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/volunteer").Include(
+                      "~/Scripts/Chart.js",
+                      "~/Scripts/progressbar.js",
+                      "~/Scripts/Volunteer/Volunteer.js"));
+
+            bundles.Add(new StyleBundle("~/Content/volunteer").Include(
+                      "~/Content/Css/Volunteer.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/font-awesome.css",
+                      "~/Content/Css/site.css",
+                      "~/Content/Css/custom.css"));
         }
     }
 }

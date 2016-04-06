@@ -6,8 +6,21 @@ namespace Web.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [Display(Name ="First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name ="Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.PostalCode)]
+        [Display(Name = "Zip Code")]
+        public int ZipCode { get; set; }
     }
 
     public class ExternalLoginListViewModel

@@ -9,7 +9,7 @@ namespace GVSU.Serialization.DTO
 
     public class User : IUser
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -17,6 +17,6 @@ namespace GVSU.Serialization.DTO
 
         public bool IsFirstLogin { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
     }
 }

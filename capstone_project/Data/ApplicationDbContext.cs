@@ -30,8 +30,7 @@ namespace GVSU.Data {
         public ApplicationDbContext(string connectionString)
             : base(connectionString, throwIfV1Schema: false)
         {
-            // uncomment if we need to serialize an entity, since lazy loading will break serialization
-            // this.Configuration.LazyLoadingEnabled = false; 
+            this.Configuration.LazyLoadingEnabled = true; 
         }
 
         public static ApplicationDbContext Create(string connectionString)
@@ -41,6 +40,7 @@ namespace GVSU.Data {
 
         public System.Data.Entity.DbSet<Volunteer> Volunteers { get; set; }
         public System.Data.Entity.DbSet<Charity> Charities { get; set; }
+        public System.Data.Entity.DbSet<Location> Locations { get; set; }
         public System.Data.Entity.DbSet<Hour> Hours { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -54,10 +54,34 @@ namespace GVSU.Data {
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
             modelBuilder.Entity<IdentityRole>().ToTable("Roles");
 
+            // Volunteer Model Builder
             modelBuilder.Entity<Volunteer>()
                 .HasRequired<ApplicationUser>(v => v.User)
                 .WithRequiredDependent(u => u.Volunteer)
                 .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Volunteer>()
+                .HasMany<Charity>(v => v.Charities)
+                .WithMany(c => c.Volunteers)
+                .Map(x =>
+                {
+                    x.MapLeftKey("VolunteerId");
+                    x.MapRightKey("CharityId");
+                    x.ToTable("VolunteerCharities");
+                });
+
+            // Charity Model Builder
+            modelBuilder.Entity<Location>()
+                .HasRequired<Charity>(l => l.Charity)
+                .WithMany(c => c.Locations)
+                .WillCascadeOnDelete();
+
+            // Hour Model Builder
+            modelBuilder.Entity<Hour>()
+                .HasRequired<Volunteer>(h => h.Volunteer);
+
+            modelBuilder.Entity<Hour>()
+                .HasRequired<Charity>(h => h.Charity);
         }
     }
 }

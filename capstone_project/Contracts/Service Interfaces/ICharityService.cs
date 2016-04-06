@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GVSU.Contracts
 {
-    public interface ICharityService
+    public interface ICharityService : IDisposable
     {
         ICharity GetCharityById(int id);
 

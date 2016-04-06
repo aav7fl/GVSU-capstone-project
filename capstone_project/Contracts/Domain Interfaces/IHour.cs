@@ -14,9 +14,9 @@
 
         ICharity Charity { get; }
 
-        DateTime StartTime { get; }
+        DateTime? StartTime { get; }
 
-        DateTime EndTime { get; }
+        DateTime? EndTime { get; }
 
         bool Verified { get; }
     }
