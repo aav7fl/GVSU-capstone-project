@@ -16,8 +16,19 @@ namespace GVSU.Tests
     [TestClass]
     public class AssemblyInitializers
     {
+
         public static IWebDriver driverFF { get; set; }
         public static IWebDriver driverGC { get; set; }
+
+        public static List<IWebDriver> drivers = new List<IWebDriver>();
+
+
+        public static string projectUrl {
+            get
+            {
+                return "https://localhost:44300/";
+            }
+        }
 
         [AssemblyInitialize]
         public static void Init(TestContext context)
@@ -25,6 +36,10 @@ namespace GVSU.Tests
             Factory.Register<IVolunteerService>(() => new VolunteerServiceSimulator());
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
+
+            //Add drivers to the list to be used in a for each method for browser testing
+            drivers.Add(driverGC);
+            drivers.Add(driverFF);
         }
 
         [AssemblyCleanup]
