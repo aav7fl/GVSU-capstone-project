@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using FluentAssertions;
 
 namespace GVSU.Tests
 {
@@ -15,12 +14,13 @@ namespace GVSU.Tests
         [TestMethod]
         public void TestWebDrivers()
         {
-            foreach (IWebDriver driverName in drivers)
+            Parallel.ForEach(drivers, driverName =>
             {
-                driverName.Navigate().GoToUrl("https://www.google.com/");
-                driverName.FindElement(By.Id("lst-ib")).SendKeys("Selenium");
-                driverName.FindElement(By.Id("lst-ib")).SendKeys(Keys.Enter);
-            }
+                driverName.Navigate().GoToUrl("https://www.python.org/");
+                driverName.FindElement(By.Name("q")).SendKeys("pycon");
+                driverName.FindElement(By.Name("q")).Submit();
+                driverName.PageSource.Should().NotContain("No results found.");
+            });
         }
 
     }

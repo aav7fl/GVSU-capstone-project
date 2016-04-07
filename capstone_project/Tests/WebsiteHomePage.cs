@@ -1,11 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using System.Collections.ObjectModel;
 using FluentAssertions;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GVSU.Tests
 {
@@ -17,10 +16,10 @@ namespace GVSU.Tests
         [TestMethod]
         public void VerifyHomeLinks()
         {
-
-            foreach (IWebDriver driverName in drivers)
+            Parallel.ForEach(drivers, driverName =>
             {
                 driverName.Navigate().GoToUrl(AssemblyInitializers.projectUrl);
+                driverName.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
                 ReadOnlyCollection<IWebElement> links = driverName.FindElements(By.TagName("a"));
 
@@ -41,31 +40,29 @@ namespace GVSU.Tests
                 href.Should().Contain("/Charity");
                 href.Should().Contain("/Account/Register");
                 href.Should().Contain("/Account/Login");
-            }
+            });
 
-           
         }
-
+        
         [TestMethod]
         public void TestMenuNavigation()
         {
-            foreach (IWebDriver driverName in drivers)
+            //TODO Add Volunteer once firstnam/lastname fixed.
+            var navigationLinks = new List<string> { "Home", "About", "Contact", "Charity", "Register", "Log in" };
+
+            Parallel.ForEach(drivers, driverName =>
             {
                 driverName.Navigate().GoToUrl(AssemblyInitializers.projectUrl);
 
                 IWebElement link;
 
-                //TODO Add Volunteer once firstnam/lastname fixed.
-                var navigationLinks = new List<string> { "Home", "About", "Contact", "Charity", "Register", "Log in" };
-
                 foreach (string linkName in navigationLinks)
                 {
                     link = driverName.FindElement(By.LinkText(linkName));
                     link.Click();
-                    driverName.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+                    driverName.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
                 }
-            }
+            });
         }
-
     }
 }

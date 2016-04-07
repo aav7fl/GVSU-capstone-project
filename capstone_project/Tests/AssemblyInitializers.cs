@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using GVSU.BusinessLogic;
 using GVSU.Contracts;
 using GVSU.Simulators;
@@ -16,12 +12,9 @@ namespace GVSU.Tests
     [TestClass]
     public class AssemblyInitializers
     {
-
         public static IWebDriver driverFF { get; set; }
         public static IWebDriver driverGC { get; set; }
-
         public static List<IWebDriver> drivers = new List<IWebDriver>();
-
 
         public static string projectUrl {
             get
@@ -37,7 +30,7 @@ namespace GVSU.Tests
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
 
-            //Add drivers to the list to be used in a for each method for browser testing
+            //Add drivers to the list to be used in a for-each method for browser testing
             drivers.Add(driverGC);
             drivers.Add(driverFF);
         }
