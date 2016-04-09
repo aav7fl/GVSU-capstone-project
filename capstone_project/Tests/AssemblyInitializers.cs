@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using System.Configuration;
 
 namespace GVSU.Tests
 {
@@ -16,12 +17,19 @@ namespace GVSU.Tests
         public static IWebDriver driverGC { get; set; }
         public static List<IWebDriver> drivers = new List<IWebDriver>();
 
-        public static string projectUrl {
-            get
-            {
-                return "https://localhost:44300/";
-            }
+        public static string WebsiteAddress {
+
+        get
+        {
+            string url;
+#if DEBUG
+            url = ConfigurationManager.AppSettings["LocalUrl"];
+#else
+            url = "https://gvsuciscapstone.azurewebsites.net/";
+#endif
+            return url;
         }
+    }
 
         [AssemblyInitialize]
         public static void Init(TestContext context)

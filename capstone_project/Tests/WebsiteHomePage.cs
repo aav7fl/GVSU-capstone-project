@@ -13,12 +13,13 @@ namespace GVSU.Tests
     {
         List<IWebDriver> drivers = AssemblyInitializers.drivers;
 
-        [TestMethod]
+        [TestMethod] 
+        [TestCategory("Selenium")]
         public void VerifyHomeLinks()
         {
             Parallel.ForEach(drivers, driverName =>
             {
-                driverName.Navigate().GoToUrl(AssemblyInitializers.projectUrl);
+                driverName.Navigate().GoToUrl(AssemblyInitializers.WebsiteAddress);
                 driverName.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
 
                 ReadOnlyCollection<IWebElement> links = driverName.FindElements(By.TagName("a"));
@@ -45,6 +46,7 @@ namespace GVSU.Tests
         }
         
         [TestMethod]
+        [TestCategory("Selenium")]
         public void TestMenuNavigation()
         {
             //TODO Add Volunteer once firstnam/lastname fixed.
@@ -52,7 +54,7 @@ namespace GVSU.Tests
 
             Parallel.ForEach(drivers, driverName =>
             {
-                driverName.Navigate().GoToUrl(AssemblyInitializers.projectUrl);
+                driverName.Navigate().GoToUrl(AssemblyInitializers.WebsiteAddress);
 
                 IWebElement link;
 
