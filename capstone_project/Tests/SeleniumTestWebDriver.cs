@@ -7,6 +7,7 @@ using FluentAssertions;
 namespace GVSU.Tests
 {
     [TestClass]
+    [TestCategory("Selenium")]
     public class SeleniumTestWebDriver
     {
         List<IWebDriver> drivers = AssemblyInitializers.drivers;
