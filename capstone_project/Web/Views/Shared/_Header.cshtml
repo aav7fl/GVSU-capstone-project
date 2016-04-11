@@ -17,6 +17,22 @@
                 <li>@Html.ActionLink("Volunteer", "Index", "Volunteer")</li>
                 <li>@Html.ActionLink("Charity", "Index", "Charity")</li>
             </ul>
+
+            <input type="textbox" placeholder="Search Charity" id="search-box" class="twitter-typeahead navbar-form navbar-right" />
+
+
+            <script type="text/javascript">
+            $("#search-box").typeahead({
+                name: 'charity',
+                valueKey: 'Name',
+                minLength: 1,
+                remote: {
+                    url: '/api/charity/search?searchTerm=%QUERY'
+                }
+            });
+            alert("hi!");
+            </script>
+
             @Html.Partial("_LoginPartial")
         </div>
             </div>
