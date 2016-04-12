@@ -18,19 +18,35 @@
                 <li>@Html.ActionLink("Charity", "Index", "Charity")</li>
             </ul>
 
-            <input type="textbox" placeholder="Search Charity" id="search-box" class="twitter-typeahead navbar-form navbar-right" />
+            <input type="textbox" placeholder="Search Charity" id="charity-search" class="typeahead navbar-form navbar-right" />
 
 
             <script type="text/javascript">
-            $("#search-box").typeahead({
-                name: 'charity',
-                valueKey: 'Name',
-                minLength: 1,
-                remote: {
-                    url: '/api/charity/search?searchTerm=%QUERY'
-                }
-            });
-            alert("hi!");
+                $(document).ready(function () {
+
+                    var charityList = new Bloodhound({
+                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('charity'),
+                        queryTokenizer: Bloodhound.tokenizers.whitespace,
+                        limit: 10,
+                        remote: {
+                            url: '/api/charity/search?searchTerm=%QUERY',
+                            wildcard: '%QUERY'
+                        }
+                    });
+                    charityList.initialize();
+
+                    $('#charity-search').typeahead({
+                            highlight: true,
+                            minLength: 1
+                        },
+                        {
+                        
+                        name: 'ICharity',
+                        displayKey: 'name',
+                        source: charityList.ttAdapter()
+                    });
+                });
+
             </script>
 
             @Html.Partial("_LoginPartial")
