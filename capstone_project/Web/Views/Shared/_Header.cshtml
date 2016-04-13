@@ -21,6 +21,9 @@
             <input type="textbox" placeholder="Search Charity" id="charity-search" class="typeahead navbar-form navbar-right" />
 
 
+           
+
+            @Html.Partial("_LoginPartial")
             <script type="text/javascript">
                 $(document).ready(function () {
 
@@ -40,16 +43,22 @@
                             minLength: 1
                         },
                         {
-                        
                         name: 'ICharity',
                         displayKey: 'name',
-                        source: charityList.ttAdapter()
+                        source: charityList.ttAdapter(),
+                        templates: {
+                            empty: [
+                              '<div class="empty-message">',
+                              'unable to find any Best Picture winners that match the current query',
+                              '</div>'
+                            ].join('\n'),
+                            suggestion: Handlebars.compile('<p><a href="/charity/{{id}}">{{name}}</a></p>')
+                        }
+                        });
                     });
-                });
+
 
             </script>
-
-            @Html.Partial("_LoginPartial")
         </div>
             </div>
     </div>

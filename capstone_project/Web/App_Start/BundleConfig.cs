@@ -36,6 +36,9 @@ namespace Web
                       "~/Content/font-awesome.css",
                       "~/Content/Css/site.css",
                       "~/Content/Css/custom.css"));
+            bundles.Add(new StyleBundle("~/bundles/rating").Include(
+                      "~/Content/rating.css",
+                      "~/Scripts/rating.js"));
         }
     }
 }

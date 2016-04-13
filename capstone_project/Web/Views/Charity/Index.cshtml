@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 
-@model Web.Models.CharityViewModel.UpdateCharityProfile
+@model Web.Models.CharityViewModel
 @{
     ViewBag.Title = "Charity profile";
 }
@@ -15,9 +15,9 @@
     <hr />
     @Html.Label(String.Empty, "User: " + User.Identity.GetUserName())
     <div class="form-group">
-        @Html.LabelFor(m => m.CharityName, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Charity.Name, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DisplayFor(m => m.CharityName, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DisplayFor(m => m.Charity.Name, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
     <br />

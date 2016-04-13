@@ -7,17 +7,20 @@
     using System.Web.Mvc;
     using GVSU.Contracts;
     using Owin;
+    using Web.Models; 
 
     public class VolunteerController : ServiceControllerBase<IVolunteerService>
     {
+        VolunteerViewModel vm = new VolunteerViewModel();
+
         // GET: Volunteer
         [Route("Volunteer/{id?}")]
         public ActionResult Index(int? id)
         {
-            Web.Models.VolunteerViewModel vm = new Web.Models.VolunteerViewModel();
+            
             if (id == null)
             {
-                vm.Volunteer = this.Service.GetVolunteerById(2);
+                vm.Volunteer = this.Service.GetVolunteerById(1);
                 return View(vm);
             }
             else
@@ -28,9 +31,18 @@
         }
 
         // GET: Volunteer Edit
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                vm.Volunteer = this.Service.GetVolunteerById(1);
+                return View(vm);
+            }
+            else
+            {
+                vm.Volunteer = this.Service.GetVolunteerById(id.Value);
+                return View(vm);
+            }
         }
 
         /**
