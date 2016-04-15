@@ -64,7 +64,6 @@ namespace GVSU.Tests.selenium
             Parallel.ForEach(drivers, driverName =>
             {
                 driverName.Navigate().GoToUrl(AssemblyInitializers.WebsiteAddress);
-                IWebElement link;
                 List<string> navigationLinks = GetHeaderLinks(driverName);
                 Console.WriteLine("Nav Links: {0}", navigationLinks);
                 foreach (string linkName in navigationLinks)
@@ -84,22 +83,73 @@ namespace GVSU.Tests.selenium
             //Iterate through each web driver (currently Google Chrome and Firefox)
             Parallel.ForEach(drivers, driverName =>
             {
+                driverName.Navigate().GoToUrl(AssemblyInitializers.WebsiteAddress);
+
                 List<string> navigationLinks = GetHeaderLinks(driverName);
+
                 //Iterate through each link from the website header
                 foreach (string headerLink in navigationLinks)
                 {
                     driverName.Navigate().GoToUrl(headerLink);
-
+                    
                     ReadOnlyCollection<IWebElement> links = driverName.FindElements(By.TagName("a"));
-
+                    
                     Parallel.ForEach(links, link =>
                     {
                         String href = link.GetAttribute("href");
                         //Ignore Empty, JavaScript, and mailto Responses
                         if (href != null && !href.Contains("javascript") && !href.Contains("mailto"))
                         {
+                            Console.WriteLine("Header Links: {0}", href);
                             HttpStatusCode returnedvalue = getHttpStatusCode(href);
                             returnedvalue.Should().Be(HttpStatusCode.OK);
+                        }
+                    });
+                }
+
+            });
+        }
+
+        [TestMethod]
+        [TestCategory("Selenium")]
+        //Test each webpage listed in the website header for dead links.
+        public void TestForDeadImages()
+        {
+            //Iterate through each web driver (currently Google Chrome and Firefox)
+            Parallel.ForEach(drivers, driverName =>
+            {
+                driverName.Navigate().GoToUrl(AssemblyInitializers.WebsiteAddress);
+
+                List<string> navigationLinks = GetHeaderLinks(driverName);
+                //Iterate through each link from the website header
+                foreach (string headerLink in navigationLinks)
+                {
+                    ReadOnlyCollection<IWebElement> images = null; 
+                    driverName.Navigate().GoToUrl(headerLink);
+                    try
+                    {
+                        images = driverName.FindElements(By.TagName("img"));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("An error occurred: '{0}'", e);
+                    }
+
+                    Parallel.ForEach(images, imageLink =>
+                    {
+                        String href = imageLink.GetAttribute("src");
+                        //Ignore Empty, JavaScript, and mailto Responses
+                        if (href != null && !href.Contains("javascript"))
+                        {
+                            HttpStatusCode returnedvalue = getHttpStatusCode(href);
+                            try
+                            {
+                                returnedvalue.Should().Be(HttpStatusCode.OK);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw;
+                            }
                         }
                     });
                 }
@@ -137,9 +187,11 @@ namespace GVSU.Tests.selenium
         //Helper method to dynamically pull a list<string> of the links contained within the website header
         private List<string> GetHeaderLinks(IWebDriver driverName)
         {
-            ReadOnlyCollection<IWebElement> links;
+            
             List<string> linkString = new List<string>();
-            links = driverName.FindElement(By.Name("nav-links")).FindElements(By.TagName("a"));
+
+            ReadOnlyCollection<IWebElement> links = driverName.FindElement(By.Name("nav-links")).FindElements(By.TagName("a"));
+            Console.Write("Links:{0}",links);
             foreach (IWebElement linkName in links)
             {
                 linkString.Add(linkName.GetAttribute("href"));
