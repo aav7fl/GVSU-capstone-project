@@ -69,11 +69,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AssemblyInitializers.cs" />
-    <Compile Include="ServiceTestBase.cs" />
+    <Compile Include="selenium\WebServer.cs" />
+    <Compile Include="selenium\Links.cs" />
+    <Compile Include="selenium\ServiceTestBase.cs" />
     <Compile Include="TestVolunteerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeleniumTestWebDriver.cs" />
-    <Compile Include="WebsiteHomePage.cs" />
+    <Compile Include="selenium\VerifyWebDriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
@@ -93,9 +94,7 @@
       <Name>Simulators</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestImplementations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

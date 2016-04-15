@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Threading;
 using System;
 using System.IO;
+using MyWebSiteProject.Tests.Acceptance;
 
 namespace GVSU.Tests
 {
@@ -39,6 +40,7 @@ namespace GVSU.Tests
         [AssemblyInitialize]
         public static void Init(TestContext context)
         {
+            WebServer.StartIis();
             Factory.Register<IVolunteerService>(() => new VolunteerServiceSimulator());
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
@@ -54,6 +56,8 @@ namespace GVSU.Tests
         {
             driverFF.Quit(); //exit Firefox selenium driver at the end of the test
             driverGC.Quit(); //exit Google Chrome selenium driver at the end of the test
+
+            WebServer.StopIis();
         }
     }
 }
