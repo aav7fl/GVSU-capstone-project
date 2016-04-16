@@ -41,11 +41,11 @@ namespace GVSU.Tests
 #endif
             Factory.Register<IVolunteerService>(() => new VolunteerServiceSimulator());
 
-            //driverFF = new FirefoxDriver();
+            driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
 
             //Add drivers to the list to be used in a for-each method for browser testing
-            //drivers.Add(driverFF);
+            drivers.Add(driverFF);
             drivers.Add(driverGC);
         }
         
@@ -53,7 +53,7 @@ namespace GVSU.Tests
         [AssemblyCleanup]
         public static void TearDown()
         {
-            //driverFF.Quit(); //exit Firefox selenium driver at the end of the test
+            driverFF.Quit(); //exit Firefox selenium driver at the end of the test
             driverGC.Quit(); //exit Google Chrome selenium driver at the end of the test
 #if DEBUG
             WebServer.StopIis();
