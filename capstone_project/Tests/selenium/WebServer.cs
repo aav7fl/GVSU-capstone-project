@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace MyWebSiteProject.Tests.Acceptance
+namespace GVSU.Tests.selenium
 {
     public static class WebServer
     {

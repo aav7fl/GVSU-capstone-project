@@ -7,11 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System.Configuration;
-using System.Diagnostics;
-using System.Threading;
-using System;
-using System.IO;
-using MyWebSiteProject.Tests.Acceptance;
+using GVSU.Tests.selenium;
 
 namespace GVSU.Tests
 {
@@ -47,10 +43,10 @@ namespace GVSU.Tests
 
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
-            
+
             //Add drivers to the list to be used in a for-each method for browser testing
-            drivers.Add(driverGC);
             drivers.Add(driverFF);
+            drivers.Add(driverGC);
         }
         
 
