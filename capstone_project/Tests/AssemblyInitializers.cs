@@ -30,9 +30,8 @@ namespace GVSU.Tests
 #if DEBUG
                 url = ConfigurationManager.AppSettings["LocalUrl"];
 #else
-                url = "https://gvsuciscapstone.azurewebsites.net/";
+                url = ConfigurationManager.AppSettings["RemoteUrl"];
 #endif
-                //Console.WriteLine("URL:" + ConfigurationManager.AppSettings["LocalUrl"]);
                 return url;
             }
         }
@@ -40,8 +39,12 @@ namespace GVSU.Tests
         [AssemblyInitialize]
         public static void Init(TestContext context)
         {
+#if DEBUG
+            //Start IIS serverFor hosting local project
             WebServer.StartIis();
+#endif
             Factory.Register<IVolunteerService>(() => new VolunteerServiceSimulator());
+
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
             
@@ -56,8 +59,9 @@ namespace GVSU.Tests
         {
             driverFF.Quit(); //exit Firefox selenium driver at the end of the test
             driverGC.Quit(); //exit Google Chrome selenium driver at the end of the test
-
+#if DEBUG
             WebServer.StopIis();
+#endif
         }
     }
 }

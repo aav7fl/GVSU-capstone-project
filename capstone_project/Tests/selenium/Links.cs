@@ -119,6 +119,7 @@ namespace GVSU.Tests.selenium
             Parallel.ForEach(drivers, driverName =>
             {
                 driverName.Navigate().GoToUrl(AssemblyInitializers.WebsiteAddress);
+                driverName.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(3));
 
                 List<string> navigationLinks = GetHeaderLinks(driverName);
                 //Iterate through each link from the website header
