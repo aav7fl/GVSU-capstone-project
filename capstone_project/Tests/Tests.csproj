@@ -69,6 +69,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AssemblyInitializers.cs" />
+    <Compile Include="selenium\Register.cs" />
+    <Compile Include="selenium\Login.cs" />
     <Compile Include="selenium\WebServer.cs" />
     <Compile Include="selenium\Links.cs" />
     <Compile Include="selenium\ServiceTestBase.cs" />
