@@ -4,6 +4,7 @@
 # Private Configuration files
 ConnectionStrings.config
 AppSettings.config
+capstone_project/Tests/App.config
 
 # User-specific files
 *.suo
