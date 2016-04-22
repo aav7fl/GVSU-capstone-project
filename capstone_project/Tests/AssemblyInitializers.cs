@@ -44,7 +44,7 @@ namespace GVSU.Tests
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
 
-            //Add drivers to the list to be used in a for-each method for browser testing
+            //Add drivers to the list to be used in a for-each method for browser testing.
             drivers.Add(driverFF);
             drivers.Add(driverGC);
         }
