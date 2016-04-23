@@ -13,11 +13,15 @@ namespace GVSU.Serialization.DTO
 
         public string ShortDescription { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        public ICategory Category { get; set; }
+
         public string Email { get; set; }
 
         public string PhoneNumber { get; set; }
 
-        public string WebsiteURL { get; set; }
+        public string WebsiteUrl { get; set; }
 
         public DateTime? CreatedAt { get; set; }
 
@@ -32,5 +36,11 @@ namespace GVSU.Serialization.DTO
         public bool Claimed { get; set; }
 
         public bool Verified { get; set; }
+
+        public double TotalHours { get; set; }
+
+        public int FollowersCount { get; set; }
+
+        public double? AverageRating { get; set; }
     }
 }

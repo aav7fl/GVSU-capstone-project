@@ -23,6 +23,8 @@ namespace GVSU.Data
 
         public string LastName { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public bool IsFirstLogin { get; set; }
 
         public DateTime CreatedAt { get; set; }

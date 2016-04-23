@@ -40,8 +40,13 @@ namespace GVSU.Data {
 
         public System.Data.Entity.DbSet<Volunteer> Volunteers { get; set; }
         public System.Data.Entity.DbSet<Charity> Charities { get; set; }
+        public System.Data.Entity.DbSet<Category> Categories { get; set; }
         public System.Data.Entity.DbSet<Location> Locations { get; set; }
         public System.Data.Entity.DbSet<Hour> Hours { get; set; }
+        public System.Data.Entity.DbSet<Skill> Skills { get; set; }
+        public System.Data.Entity.DbSet<VolunteerSkill> VolunteerSkills { get; set; }
+        public System.Data.Entity.DbSet<Badge> Badges { get; set; }
+        public System.Data.Entity.DbSet<VolunteerBadges> VolunteerBadges { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -74,7 +79,7 @@ namespace GVSU.Data {
             modelBuilder.Entity<Location>()
                 .HasRequired<Charity>(l => l.Charity)
                 .WithMany(c => c.Locations)
-                .WillCascadeOnDelete();
+                .WillCascadeOnDelete(true);
 
             // Hour Model Builder
             modelBuilder.Entity<Hour>()

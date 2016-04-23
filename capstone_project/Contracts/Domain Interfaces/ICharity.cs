@@ -14,11 +14,15 @@ namespace GVSU.Contracts
 
         string ShortDescription { get; }
 
+        string ImageUrl { get; set; }
+
+        ICategory Category { get; }
+
         string Email { get; }
 
         string PhoneNumber { get; }
 
-        string WebsiteURL { get; }
+        string WebsiteUrl { get; }
 
         DateTime? CreatedAt { get; }
 
@@ -33,5 +37,11 @@ namespace GVSU.Contracts
         bool Claimed { get; }
 
         bool Verified { get; }
+
+        double TotalHours { get; set; }
+
+        int FollowersCount { get; set; }
+
+        double? AverageRating { get; set; }
     }
 }

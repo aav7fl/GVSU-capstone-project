@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GVSU.Data.Entities
+namespace GVSU.Contracts
 {
-    public class Skill
+    public interface ICategory
     {
-        public int Id { get; set; }
+        int Id { get; }
 
-        public string Description { get; set; }
+        string Description { get; }
     }
 }

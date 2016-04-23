@@ -21,6 +21,13 @@ namespace GVSU.Data.Entities
 
         public string ShortDescription { get; set; }
 
+        public string ImageUrl { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set;}
+
         public string Email { get; set; }
 
         public string PhoneNumber { get; set; }
@@ -48,5 +55,14 @@ namespace GVSU.Data.Entities
         public bool Verified { get; set; }
 
         public virtual ICollection<Volunteer> Volunteers { get; set; }
+
+        [NotMapped]
+        public double TotalHours { get; set; }
+
+        [NotMapped]
+        public int FollowersCount { get; set; }
+
+        [NotMapped]
+        public double? AverageRating { get; set; }
     }
 }

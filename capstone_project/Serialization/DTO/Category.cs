@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GVSU.Contracts;
 
-namespace GVSU.Data.Entities
+namespace GVSU.Serialization.DTO
 {
-    public class Skill
+    public class Category : ICategory
     {
         public int Id { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GVSU.Data.Entities
 {
-    public class Skill
+    public class Category
     {
         public int Id { get; set; }
 
