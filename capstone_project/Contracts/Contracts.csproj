@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Decorators\CharityServiceDecorator.cs" />
     <Compile Include="Decorators\VolunteerServiceDecorator.cs" />
+    <Compile Include="Domain Interfaces\IBadge.cs" />
+    <Compile Include="Domain Interfaces\ICategory.cs" />
     <Compile Include="Domain Interfaces\ICharity.cs" />
     <Compile Include="Domain Interfaces\IContactInfo.cs" />
     <Compile Include="Domain Interfaces\IHour.cs" />

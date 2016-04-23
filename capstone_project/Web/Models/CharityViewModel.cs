@@ -12,17 +12,20 @@ namespace Web.Models
     {
         public ICharity Charity { get; set; }
 
-        [Display(Name = "Charity name")]
-        public string CharityName { get; set; }
+        public class UpdateCharityProfile
+        {
+            [Display(Name = "Charity name")]
+            public string CharityName { get; set; }
 
-        [Display(Name = "Total Hours")]
-        public int Hours { get; set; }
+            [Display(Name = "Total Hours")]
+            public int Hours { get; set; }
 
-        [Range(1, 5)]
-        [Display(Name = "Rating (1-5)")]
-        public int Rating { get; set; }
+            [Range(1, 5)]
+            [Display(Name = "Rating (1-5)")]
+            public int Rating { get; set; }
 
-        [Display(Name = "Short description")]
-        public string ShortDescription { get; set; }
-}
+            [Display(Name = "Short description")]
+            public string ShortDescription { get; set; }
+        }
+    }
 }

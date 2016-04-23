@@ -11,6 +11,7 @@
     using GVSU.Data.Entities;
     using GVSU.Data.Factories;
     using System;
+
     public class SQLVolunteerService : IVolunteerService, IDisposable
     {
         private readonly ApplicationDbContext _store;
@@ -77,6 +78,23 @@
                 .Single(x => x.Id == id);
 
             _store.Users.Remove(v.User); //Cascades on delete
+            _store.SaveChanges();
+        }
+
+        public void ToggleCharity(int volunteerId, int charityId) {
+
+           Volunteer v = _store.Volunteers
+                .Include(e => e.Charities)
+                .Single(x => x.Id == volunteerId);
+
+            Charity c = _store.Charities
+                .Find(charityId);
+
+            if (v.Charities.Any(x => x.Id == charityId))
+                v.Charities.Remove(c);
+            else
+                v.Charities.Add(c);
+
             _store.SaveChanges();
         }
 

@@ -56,9 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BadgeConverter.cs" />
+    <Compile Include="Converters\CategoryConverter.cs" />
     <Compile Include="Converters\HourConverter.cs" />
     <Compile Include="Converters\LocationConverter.cs" />
     <Compile Include="Converters\UserConverter.cs" />
+    <Compile Include="DTO\Badge.cs" />
+    <Compile Include="DTO\Category.cs" />
     <Compile Include="DTO\Charity.cs" />
     <Compile Include="Converters\CharityConverter.cs" />
     <Compile Include="Converters\JsonBaseConverter.cs" />

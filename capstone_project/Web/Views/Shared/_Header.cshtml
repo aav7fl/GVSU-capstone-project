@@ -1,5 +1,5 @@
 ﻿<div class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+    <div class="container" name="nav-links">
         <div class="row">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -24,41 +24,7 @@
            
 
             @Html.Partial("_LoginPartial")
-            <script type="text/javascript">
-                $(document).ready(function () {
 
-                    var charityList = new Bloodhound({
-                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('charity'),
-                        queryTokenizer: Bloodhound.tokenizers.whitespace,
-                        limit: 10,
-                        remote: {
-                            url: '/api/charity/search?searchTerm=%QUERY',
-                            wildcard: '%QUERY'
-                        }
-                    });
-                    charityList.initialize();
-
-                    $('#charity-search').typeahead({
-                            highlight: true,
-                            minLength: 1
-                        },
-                        {
-                        name: 'ICharity',
-                        displayKey: 'name',
-                        source: charityList.ttAdapter(),
-                        templates: {
-                            empty: [
-                              '<div class="empty-message">',
-                              'unable to find any Best Picture winners that match the current query',
-                              '</div>'
-                            ].join('\n'),
-                            suggestion: Handlebars.compile('<p><a href="/charity/{{id}}">{{name}}</a></p>')
-                        }
-                        });
-                    });
-
-
-            </script>
         </div>
             </div>
     </div>

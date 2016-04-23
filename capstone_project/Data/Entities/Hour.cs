@@ -31,5 +31,11 @@
         public DateTime? EndTime { get; set; }
 
         public bool Verified { get; set; }
+
+        [Range(0,5)]
+        public int? CharityRating { get; set; }
+
+        [Range(0,5)]
+        public int? VolunteerRating { get; set; }
     }
 }

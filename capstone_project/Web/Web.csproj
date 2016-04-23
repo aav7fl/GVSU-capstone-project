@@ -259,6 +259,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CharityController.cs" />
     <Compile Include="Controllers\Api\HourController.cs" />
+    <Compile Include="Controllers\Api\SearchController.cs" />
     <Compile Include="Controllers\CharityController.cs" />
     <Compile Include="Controllers\HtmlHelpers.cs" />
     <Compile Include="Controllers\ServiceControllerBase.cs" />
@@ -302,20 +303,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ConnectionStrings.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="AppSettings.config">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\Handlebars.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -380,6 +376,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

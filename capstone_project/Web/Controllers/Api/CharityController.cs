@@ -24,15 +24,6 @@
             }
         }
 
-        //NOTE: was not able to make request from view
-        //[HttpGet]
-        [Route("api/charity/search")]
-        public IEnumerable<ICharity> GetCharities(string searchTerm)
-        {
-            var test = this.Service.GetAllCharities().Where(m => m.Name.Contains(searchTerm)).ToList();
-        
-            return this.Service.GetAllCharities().Where(m => m.Name.Contains(searchTerm)).ToList(); 
-        }
         public IHttpActionResult Get(int id)
         {
             try

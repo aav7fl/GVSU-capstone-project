@@ -10,27 +10,31 @@ namespace Web.Controllers
 {
     public class CharityController : ServiceControllerBase<ICharityService>
     {
-        CharityViewModel vm = new CharityViewModel(); 
 
         // GET: Charity
         [Route("Charity/{id?}")]
         public ActionResult Index(int? id)
         {
+            CharityViewModel vm = new CharityViewModel();
+
             if (id == null)
             {
-                vm.Charity = this.Service.GetCharityById(3);
+                vm.Charity = this.Service.GetCharityById(2);
                 return View(vm);
             }
             else
             {
                 vm.Charity = this.Service.GetCharityById(id.Value);
-                return View();
+                return View(vm);
             }
         }
 
         // GET: Charity Edit
         public ActionResult Edit(int? id)
         {
+
+            CharityViewModel vm = new CharityViewModel();
+
             if (id == null)
             {
                 vm.Charity = this.Service.GetCharityById(3);
@@ -39,7 +43,7 @@ namespace Web.Controllers
             else
             {
                 vm.Charity = this.Service.GetCharityById(id.Value);
-                return View();
+                return View(vm);
             }
         }
     }

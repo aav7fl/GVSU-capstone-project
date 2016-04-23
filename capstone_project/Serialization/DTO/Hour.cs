@@ -20,5 +20,9 @@ namespace GVSU.Serialization.DTO
         public DateTime? EndTime { get; set; }
 
         public bool Verified { get; set; }
+
+        public int? CharityRating { get; set; }
+
+        public int? VolunteerRating { get; set; }
     }
 }

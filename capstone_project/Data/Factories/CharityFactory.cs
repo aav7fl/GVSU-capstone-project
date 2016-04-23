@@ -22,9 +22,14 @@ namespace GVSU.Data.Factories
                 Id = charity.Id,
                 Name = charity.Name,
                 ShortDescription = charity.ShortDescription,
+                ImageUrl = charity.ImageUrl,
+                Category = charity.Category != null ? new Serialization.DTO.Category {
+                    Id = charity.Category.Id,
+                    Description = charity.Category.Description
+                } : null,
                 Email = charity.Email,
                 PhoneNumber = charity.PhoneNumber,
-                WebsiteURL = charity.WebsiteURL,
+                WebsiteUrl = charity.WebsiteURL,
                 CreatedAt = charity.CreatedAt,
                 CreatedBy = charity.CreatedBy != null ? new Serialization.DTO.User {
                     Id = charity.CreatedBy.Id,
@@ -39,7 +44,10 @@ namespace GVSU.Data.Factories
                 } : null,
                 Locations = null,
                 Claimed = charity.Claimed,
-                Verified = charity.Verified
+                Verified = charity.Verified,
+                TotalHours = charity.TotalHours,
+                FollowersCount = charity.FollowersCount,
+                AverageRating = charity.AverageRating
             };
         }
 
@@ -53,9 +61,10 @@ namespace GVSU.Data.Factories
                 Id = charityDTO.Id,
                 Name = charityDTO.Name,
                 ShortDescription = charityDTO.ShortDescription,
+                ImageUrl = charityDTO.ImageUrl,
                 Email = charityDTO.Email,
                 PhoneNumber = charityDTO.PhoneNumber,
-                WebsiteURL = charityDTO.WebsiteURL,
+                WebsiteURL = charityDTO.WebsiteUrl,
                 CreatedAt = charityDTO.CreatedAt,
                 UpdatedAt = charityDTO.UpdatedAt,
                 Locations = null

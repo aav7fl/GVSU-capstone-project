@@ -1,53 +1,202 @@
 ﻿@using Microsoft.AspNet.Identity
 
 @model Web.Models.CharityViewModel
-@{
-    ViewBag.Title = "Charity profile";
-}
-
-<h2>@ViewBag.Title</h2>
-@if (Request.IsAuthenticated)
+@using (Html.BeginForm("Charity", "Edit", FormMethod.Post, new { @id = "charity-profile-form" }))
 {
-    @Html.ActionLink("Edit Profile", "Edit")
+    @Html.Hidden("Id", Model.Charity.Id)
+    <!--@Html.Hidden("ImageUrl", Model.Charity.ImageUrl)-->
+    <!--@Html.Hidden("CreatedAt", Model.Charity.CreatedAt)-->
+    <!--@Html.Hidden("updatedAt", Model.Charity.UpdatedAt) -->
 
-    @Html.AntiForgeryToken()
-    <h4>Profile information</h4>
-    <hr />
-    @Html.Label(String.Empty, "User: " + User.Identity.GetUserName())
-    <div class="form-group">
-        @Html.LabelFor(m => m.Charity.Name, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DisplayFor(m => m.Charity.Name, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
-        </div>
+        @Html.Hidden("Claimed", Model.Charity.Claimed)
+        @Html.Hidden("Verified", Model.Charity.Verified)
+        @Html.Hidden("TotalHours", Model.Charity.TotalHours)
+        @Html.Hidden("charity.FollowersCount", Model.Charity.FollowersCount)
+        @Html.Hidden("charity.AverageRating", Model.Charity.AverageRating)
+@Html.AntiForgeryToken()
+    <div id="profile-content" class="container" style="margin-top: 20px">
+
+        <div class="row profile">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div style="margin: 10px auto 30px auto; height: 200px; width: 100%">
+                        <img class="charity-banner-image" style="max-height: 100%; max-width: 100%; margin: auto; display: block;"src="@(Model.Charity.ImageUrl ?? "http://images.imagewallpaper.net/20160119/blank-background-1920x1200.jpg")" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+
+                <div class="row">
+                     <div style="margin: 10px auto;  border-bottom: 2px #F27935 solid;min-height: 150px; padding: 10px;">
+                        <div class="col-sm-offset-1">
+                            <h1 style="text-align: left;">
+                                <span>
+                                    @Model.Charity.Name
+                                </span>
+                                @Html.Hidden("Name", Model.Charity.Name)
+                            </h1>
+                        </div>
+                        <div class="col-sm-offset-1">
+                         <h2>
+                            <span>@Model.Charity.Category.Description</span>
+                             <!--@Html.Hidden("charity.Category.Id", @Model.Charity.Category.Id)
+                             @Html.Hidden("charity.Category.Description", @Model.Charity.Category.Description) -->
+                         </h2>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-5 col-sm-12">
+                        <h3>General Information</h3>
+
+                        <ul class="profile-details">
+                            
+                            <li>
+                                <div><p><i class="fa fa-heart-o"></i> Mission</p></div>
+                                <p class="editable">@(Model.Charity.ShortDescription ?? "Click to Add")</p>
+                                @Html.Hidden("charity.ShortDescription", Model.Charity.ShortDescription)
+                            </li>
+                        </ul>
+
+                        <h3>Contact Information</h3>
+
+                        <ul class="profile-details">
+                            <li>
+                                <div><p><i class="fa fa-share"></i> Website URL</p></div>
+                                <p class="editable">@(Model.Charity.WebsiteUrl ?? "Click to Add")</p>
+                                @Html.Hidden("charity.WebsiteUrl", Model.Charity.WebsiteUrl)
+                            </li>
+                            <li>
+                                <div><p><i class="fa fa-tablet"></i>Phone</p></div>
+                                <p class="editable">@(Model.Charity.PhoneNumber ?? "Click to Add")</p>
+                                @Html.Hidden("charity.PhoneNumber", Model.Charity.PhoneNumber)
+                            </li>
+                            <li>
+                                <div><p><i class="fa fa-map-marker"></i> Address</p></div>
+                                <p>1 Campus Drive<br />
+                                Allendale, MI 49401<br /></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--/row-->
+
+            </div><!--/col-->
+
+            <div class="col-sm-9">
+
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a data-toggle="tab" href="#summary"><p>Summary</p></a></li>
+                    <li><a data-toggle="tab" href="#followers"><p>Followers</p></a></li>
+
+                    @if (Model.Charity.Verified)
+                    {
+                        <li><a data-toggle="tab" href="#admin"><p>Admin</p></a></li>
+                    }
+                </ul>
+
+                <div class="tab-content" style="padding: 30px;">
+                    <div class="tab-pane active container" id="summary">
+
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="row">
+                                    <h3>Volunteer Hours</h3>
+                                    <p >@(Model.Charity.TotalHours.ToString("N1"))</p>
+                                </div> 
+                                <div class="row">
+                                    <h3>Average Rating</h3>
+                                    <p >@((Model.Charity.AverageRating ?? 0.0).ToString("N1"))</p>
+                                </div>  
+                            </div><!--/col-->
+
+                        </div><!--/row-->
+
+                    </div>
+                    <div class="tab-pane" id="followers">
+                        <div class="row">
+                            <div class="col-sm-7">
+                                <div class="row">
+                                    <h3>@(Model.Charity.FollowersCount)</h3>
+                                    <h3>volunteers are following this charity</h3>
+                                </div>
+                            </div><!--/col-->
+
+                        </div><!--/row-->
+                    </div>
+                </div>
+
+            </div><!--/col-->
+
+        </div><!--/profile-->
     </div>
-    <br />
-    <div class="form-group">
-        @Html.LabelFor(m => m.Hours, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DisplayFor(m => m.Hours, null, "Hours", new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-    <br />
-    <div class="form-group">
-        @Html.LabelFor(m => m.Rating, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DisplayFor(m => m.Rating, null, "Rating", new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-    <br />
-    <div class="form-group">
-        @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DisplayFor(m => m.ShortDescription, null, "Short Description", new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-    <br />
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(document).ready(function () {
+
+                $('.editable').css('background-color', 'lightgoldenrodyellow');
+                $('.editable').prop('contentEditable', 'true');
+
+                $('.editable').on('focus', function () {
+                    if ( $('.editButton').length  == 0) {
+                        $(this).parent().append("<div><button class='editSave editButton btn btn-primary'>Save</button><button class='editButton btn'>Cancel</button></div>");
+                    }
+                    $('.editSave').on('click', function (e) {
+                        e.preventDefault();
+
+                        $('#charity-profile-form').submit();
+                        $(".editButton").remove();
+                            
+                    });
+                    $('.editButton').on('click', function (e) {
+                        $(".editButton").remove();
+                    });
+                });
+
+                $('#charity-profile-form').submit(function () {
+                    var formData = serializeObject($('#charity-profile-form').serializeArray());
+                    var test = "{charity: { Id: 2, Name: 'Hello'}}";
+                    $.ajax({
+                        url: '/api/Charity/1',
+                        type: "PUT",
+                        dataType: "json",
+                        contentType: 'application/json; charset=utf-8',
+                        data: ('{ "charity" : {' + JSON.stringify($('#charity-profile-form').serialize()) + '}}'),
+                        success: function (result) {
+                            //alert("success " + result);
+                        },
+                        error: function (result) {
+                            //alert("Failed");
+                        }
+                    });
+
+                    return false;
+                });
+
+                var serializeObject = function(formArray){
+                    var obj = {};
+                    $.each(formArray, function(i, pair){
+                        var cObj = obj, pObj, cpName;
+                        $.each(pair.name.split("."), function(i, pName){
+                            pObj = cObj;
+                            cpName = pName;
+                            cObj = cObj[pName] ? cObj[pName] : (cObj[pName] = {});
+                        });
+                        pObj[cpName] = pair.value;
+                    });
+                    return obj;
+                }
+
+                    return false;
+                });
+           
+                
+
+        </script>
+
+    }
+    @section styles {
     }
 }
-else
-{
-    @Html.ActionLink("Please Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-} 

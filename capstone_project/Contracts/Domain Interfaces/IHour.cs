@@ -19,5 +19,9 @@
         DateTime? EndTime { get; }
 
         bool Verified { get; }
+
+        int? CharityRating { get; }
+
+        int? VolunteerRating { get; }
     }
 }

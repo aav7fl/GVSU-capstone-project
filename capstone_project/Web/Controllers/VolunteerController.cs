@@ -6,9 +6,12 @@
     using System.Web;
     using System.Web.Mvc;
     using GVSU.Contracts;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
     using Owin;
     using Web.Models; 
 
+    [Authorize]
     public class VolunteerController : ServiceControllerBase<IVolunteerService>
     {
         VolunteerViewModel vm = new VolunteerViewModel();
@@ -20,7 +23,10 @@
             
             if (id == null)
             {
-                vm.Volunteer = this.Service.GetVolunteerById(1);
+                int current = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>()
+                    .FindById(User.Identity.GetUserId()).Volunteer.Id;
+
+                vm.Volunteer = this.Service.GetVolunteerById(current);
                 return View(vm);
             }
             else
@@ -39,7 +45,7 @@
                 return View(vm);
             }
             else
-            {
+        {
                 vm.Volunteer = this.Service.GetVolunteerById(id.Value);
                 return View(vm);
             }

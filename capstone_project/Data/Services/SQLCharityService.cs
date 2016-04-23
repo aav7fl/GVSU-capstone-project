@@ -24,6 +24,7 @@
         public override IEnumerable<ICharity> GetAllCharities()
         {
             IEnumerable<Charity> c = _store.Charities
+                .Include(e => e.Category)
                 .Include(e => e.CreatedBy)
                 .Include(e => e.UpdatedBy)
                 .Include(e => e.Locations)
@@ -36,10 +37,25 @@
             try
             {
                 Charity charity = _store.Charities
+                    .Include(e => e.Category)
                     .Include(e => e.CreatedBy)
                     .Include(e => e.UpdatedBy)
                     .Include(e => e.Locations)
+                    .Include(e => e.Volunteers)
                     .Single(e => e.Id == id);
+
+                charity.TotalHours = Math.Abs((_store.Hours
+                    .Where(x => x.CharityId == id)
+                    .Sum(x => DbFunctions.DiffMinutes(x.EndTime, x.StartTime)) ?? 0) / 60);
+
+                charity.FollowersCount = charity.Volunteers.Count();
+
+                charity.AverageRating = _store.Hours
+                    .Where(x => x.CharityId == id)
+                    .Average(g => 
+                        g.CharityRating
+                    );
+
                 return CharityFactory.CreateCharity(charity);
             }
             catch (InvalidOperationException)
@@ -51,7 +67,14 @@
 
         public override int CreateCharity(ICharity charityDTO)
         {
+            if (_store.Charities.Any(x => x.Name == charityDTO.Name))
+                throw new ArgumentException(); //To-Do: Make custom exception for when duplicate names are found
+
             Charity c = CharityFactory.CreateCharity(charityDTO);
+            if (charityDTO.Category != null)
+            {
+                c.CategoryId = charityDTO.Category.Id;
+            }
             if (charityDTO.CreatedBy != null)
             {
                 c.CreatedById = charityDTO.CreatedBy.Id;
@@ -75,6 +98,11 @@
                 .Single(x => x.Id == charityDTO.Id);
 
             _store.Entry(oldC).CurrentValues.SetValues(charityDTO);
+
+            if (charityDTO.Category != null)
+            {
+                oldC.CategoryId = charityDTO.Category.Id;
+            }
 
             if (charityDTO.CreatedBy != null)
             {

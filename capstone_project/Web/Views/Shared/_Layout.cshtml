@@ -6,10 +6,6 @@
     <title>@ViewBag.Title - Charma</title>
     <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300,700' rel='stylesheet' type='text/css'/>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/typeahead")
     @Styles.Render("~/Content/typeahead.css")
     @RenderSection("styles", required: false)
 
@@ -35,8 +31,49 @@
     <footer>
         @Html.Partial("_Footer")
     </footer>
-
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/typeahead")
 
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Handlebars.js"></script>
+    <script type="text/javascript">
+                $(document).ready(function () {
+
+                    var charityList = new Bloodhound({
+                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('charity'),
+                        queryTokenizer: Bloodhound.tokenizers.whitespace,
+                        limit: 10,
+                        remote: {
+                            url: '/api/charity/search?searchTerm=%QUERY',
+                            wildcard: '%QUERY'
+                        }
+                    });
+                    charityList.initialize();
+                
+                    $('#charity-search').typeahead({
+                            highlight: true,
+                            minLength: 1
+                        },
+                        {
+                        name: 'ICharity',
+                        displayKey: 'name',
+                        source: charityList.ttAdapter(),
+                        templates: {
+                            empty: [
+                              '<div class="empty-message">',
+                              'unable to find any Best Picture winners that match the current query',
+                              '</div>'
+                            ].join('\n'),
+                            suggestion: Handlebars.compile('<p><a href="/charity/{{id}}">{{name}}</a></p>')
+                        }
+                        });
+                   
+                });
+        
+
+
+    </script>
 </body>
 </html>

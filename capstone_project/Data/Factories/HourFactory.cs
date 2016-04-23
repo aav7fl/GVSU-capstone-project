@@ -24,7 +24,9 @@ namespace GVSU.Data.Factories
                 Charity = CharityFactory.CreateCharity(hour.Charity),
                 StartTime = hour.StartTime,
                 EndTime = hour.EndTime,
-                Verified = hour.Verified
+                Verified = hour.Verified,
+                CharityRating = hour.CharityRating,
+                VolunteerRating = hour.VolunteerRating
             };
         }
 
@@ -38,6 +40,8 @@ namespace GVSU.Data.Factories
                 Id = hourDTO.Id,
                 StartTime = hourDTO.StartTime,
                 EndTime = hourDTO.EndTime,
+                CharityRating = hourDTO.CharityRating,
+                VolunteerRating = hourDTO.VolunteerRating
             };
         }
     }

@@ -63,11 +63,15 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Entities\Badge.cs" />
+    <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Charity.cs" />
     <Compile Include="Entities\Location.cs" />
     <Compile Include="Entities\Hour.cs" />
     <Compile Include="Entities\Skill.cs" />
     <Compile Include="Entities\Volunteer.cs" />
+    <Compile Include="Entities\VolunteerBadges.cs" />
+    <Compile Include="Entities\VolunteerSkill.cs" />
     <Compile Include="Factories\CharityFactory.cs" />
     <Compile Include="Factories\HourFactory.cs" />
     <Compile Include="Factories\VolunteerFactory.cs" />
@@ -82,6 +86,26 @@
     <Compile Include="Migrations\201604041736537_02.cs" />
     <Compile Include="Migrations\201604041736537_02.Designer.cs">
       <DependentUpon>201604041736537_02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604130154081_03.cs" />
+    <Compile Include="Migrations\201604130154081_03.Designer.cs">
+      <DependentUpon>201604130154081_03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604130344536_04.cs" />
+    <Compile Include="Migrations\201604130344536_04.Designer.cs">
+      <DependentUpon>201604130344536_04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604130447470_05.cs" />
+    <Compile Include="Migrations\201604130447470_05.Designer.cs">
+      <DependentUpon>201604130447470_05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604130531102_06.cs" />
+    <Compile Include="Migrations\201604130531102_06.Designer.cs">
+      <DependentUpon>201604130531102_06.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604131352223_07.cs" />
+    <Compile Include="Migrations\201604131352223_07.Designer.cs">
+      <DependentUpon>201604131352223_07.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +135,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604041736537_02.resx">
       <DependentUpon>201604041736537_02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604130154081_03.resx">
+      <DependentUpon>201604130154081_03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604130344536_04.resx">
+      <DependentUpon>201604130344536_04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604130447470_05.resx">
+      <DependentUpon>201604130447470_05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604130531102_06.resx">
+      <DependentUpon>201604130531102_06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604131352223_07.resx">
+      <DependentUpon>201604131352223_07.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
