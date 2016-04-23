@@ -11,6 +11,7 @@ using GVSU.Tests.selenium;
 
 namespace GVSU.Tests
 {
+
     [TestClass]
     public class AssemblyInitializers
     {
@@ -35,11 +36,12 @@ namespace GVSU.Tests
         [AssemblyInitialize]
         public static void Init(TestContext context)
         {
+
+            Factory.Register<IVolunteerService>(() => new VolunteerServiceSimulator());
+
 #if DEBUG
             //Start IIS serverFor hosting local project
             WebServer.StartIis();
-#endif
-            Factory.Register<IVolunteerService>(() => new VolunteerServiceSimulator());
 
             driverFF = new FirefoxDriver();
             driverGC = new ChromeDriver(@".\chromedriver_win32\");
@@ -47,15 +49,17 @@ namespace GVSU.Tests
             //Add drivers to the list to be used in a for-each method for browser testing.
             drivers.Add(driverFF);
             drivers.Add(driverGC);
+#endif
         }
-        
+
 
         [AssemblyCleanup]
         public static void TearDown()
         {
+#if DEBUG
             driverFF.Quit(); //exit Firefox selenium driver at the end of the test
             driverGC.Quit(); //exit Google Chrome selenium driver at the end of the test
-#if DEBUG
+
             WebServer.StopIis();
 #endif
         }
