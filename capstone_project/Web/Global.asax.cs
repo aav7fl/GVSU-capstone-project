@@ -45,13 +45,13 @@ namespace Web
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver
                 = new CamelCasePropertyNamesContractResolver();
 
-            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new VolunteerConverter());
-            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new CharityConverter());
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new UserConverter());
-            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new HourConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new VolunteerConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new CategoryConverter());
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new LocationConverter());
-
-            //config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new ContactInfoConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new CharityConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new HourConverter());
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new BadgeConverter());
 
             JsonConvert.DefaultSettings = () =>
             {
