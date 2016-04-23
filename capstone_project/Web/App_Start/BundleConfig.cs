@@ -34,8 +34,11 @@ namespace Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
-                      "~/Content/Css/Site.css",
-                      "~/Content/Css/Custom.css"));
+                      "~/Content/Css/site.css",
+                      "~/Content/Css/custom.css"));
+            bundles.Add(new StyleBundle("~/bundles/rating").Include(
+                      "~/Content/rating.css",
+                      "~/Scripts/rating.js"));
         }
     }
 }

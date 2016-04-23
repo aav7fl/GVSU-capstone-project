@@ -1,22 +1,18 @@
 ﻿@using Microsoft.AspNet.Identity
 
 @model Web.Models.CharityViewModel
-@{
-    ViewBag.Title = "Charity profile";
-}
-
 @using (Html.BeginForm("Charity", "Edit", FormMethod.Post, new { @id = "charity-profile-form" }))
 {
     @Html.Hidden("Id", Model.Charity.Id)
     <!--@Html.Hidden("ImageUrl", Model.Charity.ImageUrl)-->
     <!--@Html.Hidden("CreatedAt", Model.Charity.CreatedAt)-->
     <!--@Html.Hidden("updatedAt", Model.Charity.UpdatedAt) -->
-    @Html.Hidden("Claimed", Model.Charity.Claimed)
-    @Html.Hidden("Verified", Model.Charity.Verified)
-    @Html.Hidden("TotalHours", Model.Charity.TotalHours)
-    @Html.Hidden("charity.FollowersCount", Model.Charity.FollowersCount)
-    @Html.Hidden("charity.AverageRating", Model.Charity.AverageRating)
 
+        @Html.Hidden("Claimed", Model.Charity.Claimed)
+        @Html.Hidden("Verified", Model.Charity.Verified)
+        @Html.Hidden("TotalHours", Model.Charity.TotalHours)
+        @Html.Hidden("charity.FollowersCount", Model.Charity.FollowersCount)
+        @Html.Hidden("charity.AverageRating", Model.Charity.AverageRating)
 @Html.AntiForgeryToken()
     <div id="profile-content" class="container" style="margin-top: 20px">
 

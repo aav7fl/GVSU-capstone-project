@@ -1,36 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GVSU.Contracts;
+using Owin;
+using Web.Models;
 
 namespace Web.Controllers
 {
-    [Authorize]
     public class CharityController : ServiceControllerBase<ICharityService>
     {
+
         // GET: Charity
-        [Route("Charity/{id}")]
-        public ActionResult Index(int id)
+        [Route("Charity/{id?}")]
+        public ActionResult Index(int? id)
         {
-            Web.Models.CharityViewModel cm = new Web.Models.CharityViewModel();
+            CharityViewModel vm = new CharityViewModel();
 
-            cm.Charity = this.Service.GetCharityById(id);
-
-            if (cm.Charity != null) {
-                return View(cm);
+            if (id == null)
+            {
+                vm.Charity = this.Service.GetCharityById(2);
+                return View(vm);
             }
             else
             {
-                return HttpNotFound();
+                vm.Charity = this.Service.GetCharityById(id.Value);
+                return View(vm);
             }
         }
 
         // GET: Charity Edit
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
-            return View();
+
+            CharityViewModel vm = new CharityViewModel();
+
+            if (id == null)
+            {
+                vm.Charity = this.Service.GetCharityById(3);
+                return View(vm);
+            }
+            else
+            {
+                vm.Charity = this.Service.GetCharityById(id.Value);
+                return View(vm);
+            }
         }
     }
 }

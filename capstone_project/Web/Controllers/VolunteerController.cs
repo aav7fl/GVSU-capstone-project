@@ -9,15 +9,18 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Owin;
+    using Web.Models; 
 
     [Authorize]
     public class VolunteerController : ServiceControllerBase<IVolunteerService>
     {
+        VolunteerViewModel vm = new VolunteerViewModel();
+
         // GET: Volunteer
         [Route("Volunteer/{id?}")]
         public ActionResult Index(int? id)
         {
-            Web.Models.VolunteerViewModel vm = new Web.Models.VolunteerViewModel();
+            
             if (id == null)
             {
                 int current = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>()
@@ -34,9 +37,18 @@
         }
 
         // GET: Volunteer Edit
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                vm.Volunteer = this.Service.GetVolunteerById(1);
+                return View(vm);
+            }
+            else
+        {
+                vm.Volunteer = this.Service.GetVolunteerById(id.Value);
+                return View(vm);
+            }
         }
 
         /**
