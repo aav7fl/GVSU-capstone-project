@@ -28,15 +28,15 @@ namespace Web
                       "~/Scripts/progressbar.js",
                       "~/Scripts/Volunteer/Volunteer.js"));
 
-            bundles.Add(new StyleBundle("~/Content/volunteer").Include(
+            bundles.Add(new StyleBundle("~/Styles/volunteer").Include(
                       "~/Content/Css/Volunteer.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Styles/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/font-awesome.css",
                       "~/Content/Css/Site.css",
                       "~/Content/Css/Custom.css"));
-            bundles.Add(new StyleBundle("~/bundles/rating").Include(
+            bundles.Add(new StyleBundle("~/Styles/rating").Include(
                       "~/Content/rating.css",
                       "~/Scripts/rating.js"));
         }
