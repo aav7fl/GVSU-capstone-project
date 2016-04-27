@@ -38,7 +38,7 @@ Throughout our project, we collaborated with Gamers Outreach, a 501(c)(3) non-pr
 
 `\GVSU-capstone-project\capstone_project\Web\ConnectionStrings.config`
 
-```
+```XML
 <connectionStrings>
   <add name="DefaultConnection" connectionString="Data Source=localhost\SQLExpress; Initial Catalog=GVSU.Charma.Web.Local; Integrated Security=True" providerName="System.Data.SqlClient" />
   <add name="LocalConnection" connectionString="Data Source=localhost\SQLExpress; Initial Catalog=GVSU.Charma.Web.Local; Integrated Security=False; User ID=""; Password=""; Connect Timeout=60" providerName="System.Data.SqlClient" />
@@ -50,7 +50,7 @@ Throughout our project, we collaborated with Gamers Outreach, a 501(c)(3) non-pr
 
 `\GVSU-capstone-project\capstone_project\Web\Tests\App.config`
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <appSettings>
