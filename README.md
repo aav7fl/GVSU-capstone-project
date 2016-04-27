@@ -40,4 +40,4 @@ Charma is an open API web application that connects volunteers with charitable o
 </configuration>
 ```
 
-[screencast overview](https://www.youtube.com/embed/HWSoWfWqcsU)
+[screencast overview](https://www.youtube.com/watch?v=HWSoWfWqcsU)
