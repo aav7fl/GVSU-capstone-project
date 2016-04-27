@@ -18,9 +18,9 @@ namespace GVSU.Data {
         /// Default constructor used for running EF migrations
         /// </summary>
         public ApplicationDbContext()
-            :base("DefaultConnection", throwIfV1Schema: false) {
+            //:base("DefaultConnection", throwIfV1Schema: false) {
             //:base("LocalConnection", throwIfV1Schema: false) {
-            //:base("AzureSQLServerConnection", throwIfV1Schema: false) {
+            :base("AzureSQLServerConnection", throwIfV1Schema: false) {
         }
 
         /// <summary>

@@ -14,18 +14,19 @@
     [Authorize]
     public class VolunteerController : ServiceControllerBase<IVolunteerService>
     {
-        VolunteerViewModel vm = new VolunteerViewModel();
 
         // GET: Volunteer
         [Route("Volunteer/{id?}")]
         public ActionResult Index(int? id)
         {
-            
-            if (id == null)
-            {
-                int current = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>()
+            VolunteerViewModel vm = new VolunteerViewModel();
+
+            int current = HttpContext.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
                     .FindById(User.Identity.GetUserId()).Volunteer.Id;
 
+            if (current > 0)
+            {
                 vm.Volunteer = this.Service.GetVolunteerById(current);
                 return View(vm);
             }
@@ -39,6 +40,8 @@
         // GET: Volunteer Edit
         public ActionResult Edit(int? id)
         {
+            VolunteerViewModel vm = new VolunteerViewModel();
+
             if (id == null)
             {
                 vm.Volunteer = this.Service.GetVolunteerById(1);

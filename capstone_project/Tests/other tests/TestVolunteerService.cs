@@ -11,14 +11,22 @@ namespace GVSU.Tests
     public class TestVolunteerService : ServiceTestBase<IVolunteerService>
     {
         [TestMethod]
-        public void CreateVolunteer()
+        public void CreateEmptyVolunteer()
         {
             var result = this.Service.CreateVolunteer(new Volunteer()
             {
-
             });
 
             result.GetType().ShouldBeEquivalentTo(typeof(int));
+        }
+
+        [TestMethod]
+        public void CreateVolunteerWithBadId()
+        {
+            var result = this.Service.CreateVolunteer(new Volunteer()
+            {
+                Id = 200011
+            });
         }
 
         [TestMethod]
