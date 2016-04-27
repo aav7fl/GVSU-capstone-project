@@ -1,4 +1,4 @@
-# Charma 
+﻿# Charma 
 ## Gamifying the Volunteer Process 
 ### GVSU Capstone-project - Winter 2016
 
@@ -34,11 +34,17 @@ The initial concept for Charma came out of a desire to help charities and volunt
 Throughout our project, we collaborated with Gamers Outreach, a 501(c)(3) non-profit organization and its volunteers to guide us in our design choices. One of our most difficult design choices was deciding on the best way to gamify our application. Some volunteers were hesitant to share anything publicly because they felt it was not tactful. They were also concerned that their volunteerism would be perceived as less altruistic. These were concerns that we continued to address with our application. In our research, we found multiple blueprints for gamification such as badges, leaderboards, unlocks, and tangible goods. We compromised and decided to go with a mix of badges, customized rewards, and tangible goods. Based on our feedback from Gamers Outreach, we found this to be the best way to incentivize volunteers with attainable and desirable rewards.
 
 
-#### Dependencies
+#### Dependencies/Set Up Instructions
 
-(This assumes you are trying to use Azure Web services to host this)
+- Enable ASP.NET 4.6 on Windows Machine (using "turn windows features on and off").
+- Install IIS
+- Install Visual Studio 2015
+- Install local SQL Server. 
 
-- A local database on SQL express and remote database on Azure demonstrated in the below configuration file sample
+(The following instructions assumes you are trying to use Azure Web services to host this)
+
+- A valid connection string to local database on SQL server for DEBUG mode
+- A valid connection string to remote database on Azure for RELEASE mode
 
 `\GVSU-capstone-project\capstone_project\Web\ConnectionStrings.config`
 

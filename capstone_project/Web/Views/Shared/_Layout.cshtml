@@ -62,9 +62,9 @@
                         source: charityList.ttAdapter(),
                         templates: {
                             empty: [
-                              '<div class="empty-message">',
+                              '<div class="empty-message"><p>',
                               'Unable to find matching charity',
-                              '</div>'
+                              '</p></div>'
                             ].join('\n'),
                             suggestion: Handlebars.compile('<p><a href="/charity/{{id}}">{{name}}</a></p>')
                         }
