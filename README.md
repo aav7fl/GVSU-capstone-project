@@ -9,7 +9,11 @@
 
 ![Homepage](https://cloud.githubusercontent.com/assets/3487107/14853391/5f09603a-0c59-11e6-8676-38a2affa356e.png)
 
-#### [Screencast overview](https://www.youtube.com/watch?v=HWSoWfWqcsU)
+#### Video overview
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=HWSoWfWqcsU
+" target="_blank"><img src="http://img.youtube.com/vi/HWSoWfWqcsU/0.jpg" 
+alt="Screencast overview" width="240" height="180" border="10" /></a>
 
 #### Abstract 
 
