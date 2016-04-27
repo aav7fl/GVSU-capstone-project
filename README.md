@@ -43,8 +43,9 @@ Throughout our project, we collaborated with Gamers Outreach, a 501(c)(3) non-pr
 
 (The following instructions assumes you are trying to use Azure Web services to host this)
 
-- A valid connection string to local database on SQL server for DEBUG mode
-- A valid connection string to remote database on Azure for RELEASE mode
+- Create a ConnectionStrings.config text file
+- Add valid connection string called "DefaultConnection" for local database on SQL server for DEBUG mode
+- Add valid connection string called "AzureSQLServerConnection" for remote database on Azure for RELEASE mode (this needs to be added in Azure Portal)
 
 `\GVSU-capstone-project\capstone_project\Web\ConnectionStrings.config`
 
@@ -56,7 +57,8 @@ Throughout our project, we collaborated with Gamers Outreach, a 501(c)(3) non-pr
 </connectionStrings>
 ```
 
-- A configuration file for the local Selenium WebDriver IIS testing
+- Create a App.config text file
+- Add a configuration file for the local Selenium WebDriver IIS testing
 
 `\GVSU-capstone-project\capstone_project\Web\Tests\App.config`
 
@@ -69,4 +71,29 @@ Throughout our project, we collaborated with Gamers Outreach, a 501(c)(3) non-pr
   </appSettings>
 </configuration>
 ```
+
+
+Run database migrations to create database either for DefaultConnection, LocalConnection, or AzureSQLServerConnection.
+- Go to `\GVSU-capstone-project\capstone_project\Data\ApplicationDbContext.cs`
+- Comment out any base constructors that are not needed, leaving the one that needs to be updated.
+
+```csharp
+public ApplicationDbContext()
+            //:base("DefaultConnection", throwIfV1Schema: false) {
+            //:base("LocalConnection", throwIfV1Schema: false) {
+            :base("AzureSQLServerConnection", throwIfV1Schema: false) {
+  }
+```
+
+
+Once ready to run migration:
+- Open Package Manager Console in Visual Studio
+- Target the "Data" project
+- Type the following command in the console:
+
+```
+update-database
+```
+
+Set the start-up project to Web, and start a new session to debug.
 
